@@ -1,0 +1,61 @@
+<header>
+    <nav>
+        <div class="nav_container">
+            <div class="logo">
+
+                <a href="./home.php"><img src="./images/logo.png" alt=""></a>
+            </div>
+            <div class="nav_links">
+                <div class="links">
+                    <a href="./search.php">
+                        <div class="icon search">
+                            <i class="fa-solid fa-magnifying-glass nav_icon"></i>
+                            <p>Rechercher</p>
+                        </div>
+                    </a>
+
+                    <a href="./publish.php">
+                        <div class="icon publish">
+                            <i class="fa-solid fa-box-open nav_icon"></i>
+                            <p>Publier une livraison</p>
+                        </div>
+                    </a>
+
+                </div>
+                <?php
+                session_start();
+                // Vérifier si l'utilisateur est connecté
+                if (isset($_SESSION['idUser'])) {
+                    var_dump($_SESSION['idUser']);
+                ?>
+                    <button id="user_name">
+                        <div class="user icon">
+
+                            <div class="circle_icon user_icon">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                            <?= $_SESSION['firstname'] ?>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </button>
+
+
+                <?php } else { ?>
+
+                    <div class="user icon" id="login_icon">
+                        <a id="connexion_link" href="./connexion.php">
+                            <div class="circle_icon user_icon">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+
+                            <div class="seConnecter">Se connecter</div>
+                        </a>
+                    </div>
+
+                <?php } ?>
+
+            </div>
+        </div>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,461 @@
+@import url('https://fonts.googleapis.com/css2?family=Andika:ital@1&family=Poppins:wght@500;900&family=Quicksand:wght@300&display=swap');
+
+
+/* font-family: 'Quicksand', sans-serif; */
+/* font-family:'Poppins', sans-serif; */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F7F7F7;
+}
+a{
+    text-decoration: none;
+    color: #3273A3;
+}
+
+nav {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #F2F2F2;
+}
+
+.logo {
+    padding-left: 20px;
+}
+
+.logo img {
+    height: 70px;
+}
+
+.nav_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.links {
+    display: flex;
+    color: #3273A3;
+
+}
+
+.nav_links {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+
+}
+
+.icon p {
+    padding-left: 10px;
+    font-size: 15px;
+    color: black;
+
+}
+.icon:hover{
+    color: #428dc3;
+    cursor: pointer;
+}
+.icon p:hover{
+    color: #428dc3;
+}
+
+.nav_icon {
+    font-size: 21px;
+
+}
+
+.user {
+    /* border-left: 2px solid #1f1f1f ; */
+    border-left: 2px solid #D9D9D9;
+    padding-left: 15px;
+
+}
+
+.circle_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #D9D9D9;
+    font-size: 26px;
+    color: rgb(85, 85, 85);
+    margin-right: 20px;
+}
+.user_icon{
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    margin-right: 10px;
+}
+#user_name{
+    border: none;
+}
+#login_icon{
+    display: inline-block;
+    margin-right: 0px;
+}
+#connexion_link{
+    display: flex;
+    text-decoration: none;
+    color: #3273A3 ;
+    font-size: 15px;
+    padding-right: 10px;
+}
+.seConnecter{
+    display: flex;
+    align-items: center;
+}
+
+.home_image img {
+    width: 100%;
+}
+
+
+.intro_title {
+    font-weight: bolder;
+    line-height: 70px;
+    font-size: 40px;
+    color: #313131;
+    margin: 0;
+
+
+
+}
+
+.m{
+    color: #C60606;
+}
+
+.shipmate_intro {
+    /* padding: 80px 230px 80px 230px; */
+    /* padding: 10% 20% 10% 20%; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+}
+
+.text {
+    max-width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.definition{
+    font-family: 'Quicksand';
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 30px
+}
+
+.shipmate_details {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: rgba(253, 252, 252, 0.48);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shipmate_details_container {
+    max-width: 70%;
+    display: flex;
+    justify-content:space-between;
+}
+
+.shipmate_details_content {
+    max-width: 30%;
+    color: rgba(2, 2, 2, 0.552);
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+}
+
+.paragraphs_title {
+    font-weight: 500;
+    color: rgb(2, 2, 2);
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+.details{
+    align-self: center;
+    color: #31313184;
+}
+.indications_container{
+    display: flex;
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    /* background-color:  #F2F2F2; */
+}
+.content{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+   
+}
+.content img{
+    width: 500px;
+    height: 500px;
+}
+.how_doesit_work h1{
+font-weight: 400;
+font-size: 36px;
+line-height: 54px;
+margin-bottom: 0;
+}
+.how_doesit_work h2{
+font-weight: 300;
+font-size: 28px;
+line-height: 40px;
+margin-top: 0;
+}
+.how_doesit_work{
+    max-width: 70%;
+
+}
+.how_doesit_work p{
+    font-size: 15px;
+/* line-height: 21px; */
+}
+.world_image{
+    justify-content: center ;
+}
+.services{
+    display: flex;
+    margin-top: 24px;
+}
+.services i {
+    color: #C60606;
+}
+.fa{
+    font-size: 26px;
+}
+.msg{
+    font-size: 20px;
+}
+.service_description h4{
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 0;
+    margin-top: 0;
+    color: #313131da;
+
+
+}
+.service_description p{
+    font-size: 13px;
+    color: #313131bd;    
+
+}
+.des{
+    margin-left: 20px;
+}
+.message{
+    margin-left: 15px;
+}
+/* style for last section */
+.shipmate_member_container{
+    background-color: white;
+    padding: 100px 20px 100px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.shipmate_member_content{
+max-width: 60%;
+display: flex;
+flex-direction: column;
+padding-right: 30px;
+}
+.member_img{
+    max-width: 40%;
+    display: flex;
+    align-items: center;
+}
+.member_img img{
+    
+    max-width: 100%;
+    height:auto; 
+    
+}
+
+
+.red_banner_content img{
+    width: 35px;
+    height: 35px;
+}
+.red_banner_content{
+    display: flex;
+    padding: 20px 10px 20px 10px;
+    width: 45%;
+    box-shadow: 2px 2px 8px 2px rgba(58, 58, 58, 0.299);
+    border-bottom: 15px solid #C60606 ;
+    
+}
+.red_banner_container{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.red_banner_description{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10px;
+}
+.red_banner_description p{
+    margin: 0;
+    line-height: 30px;
+}
+.shipmate_member_content button{
+    background-color: #C60606;
+    color: white;
+    padding: 5px 30px 5px 30px;
+    border-radius: 6px;
+    font-size: 18px;
+    line-height: 30px;
+    border: none;
+    max-width: fit-content;
+    align-self: center;
+}
+.shipmate_member_content button:hover{
+    cursor: pointer;
+    background: #dd0f0faf;
+    transition: 0.3s ease-in-out;
+}
+/*style pour le footer */
+.social_media_container{
+    background-color: #3F3B3B;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content:space-evenly ;
+
+}
+.social_media{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #898787;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.social_media:hover{
+    cursor: pointer;
+    background:  #cfcdcde9;
+
+}
+
+.copyright{
+    padding-top:7px;
+    padding-bottom:7px;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+}
+
+                 /* ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+                /* ------------------style pour le responsive------------------- */
+                /* ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+
+ /*style de la derniere section */
+
+ @media (max-width: 1580px) {
+    .shipmate_member_container{
+        flex-direction: column;
+        align-items: center;
+    }
+    .shipmate_member_content{
+        max-width: 100%;
+ }
+ .member_img{
+    max-width: 70%;
+    margin-top: 15px;
+ }
+ }
+ @media (max-width: 1050px) {
+    
+    .red_banner_container{
+        flex-direction: column;
+        align-items: center;
+    }
+    .red_banner_content{
+        margin-bottom: 20px;
+        width: 70%;
+    }
+   
+    /* style de la section "comment ça marche"*/
+    .indications_container{
+        flex-direction: column;
+    }
+
+ }
+ @media (max-width: 850px) {
+    .search p{
+        display: none;
+    }
+    .publish p {
+        display: none;
+    }
+    .user_icon{
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+        margin-right: 10px;
+    }
+    .user{
+        margin-right: 20px;
+        padding-left: 20px;
+    }
+    .logo img {
+        height: 50px;
+    }
+    .shipmate_details_container{
+        flex-direction: column;
+    }
+    .shipmate_details_content{
+        max-width: 100%;
+    }
+    .content img{
+        width: auto;
+        height: auto;
+    }
+    .home_image{
+        background-color: white;
+        padding-bottom:100px ;
+        padding-top:100px
+    }
+  
+}
+@media (max-width: 450px) {
+    .seConnecter{
+        display: none;
+    }
+
+}
+
+
+
+   

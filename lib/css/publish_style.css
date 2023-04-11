@@ -1,0 +1,206 @@
+.publish_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+main{
+    display: flex;
+    justify-content: center;
+}
+select{
+    border: none;
+    width: 80%;
+    margin: 0;
+    border-radius: 0.5rem;
+    vertical-align: middle;
+    font-size: 18px;
+    color: #6e6a6a;
+    padding: 13px 0;
+}
+
+select:focus {
+    outline: none; /* remove the default focus outline */
+  }
+select option{
+    font-weight: normal;
+    display: block;
+    padding: 10px;
+    font-size: 18px;
+    outline: none;
+
+}
+
+.publish_container h3 {
+    font-size: 40px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.publish_form,
+.input_container {
+    background: #FFFFFF;
+    border: 1px solid #E4E4E4;
+    box-shadow: 0px 0px 6px 1px rgba(163, 163, 163, 0.25);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.input_container {
+    margin-bottom: 25px;
+}
+
+.publish_form {
+    padding: 50px 30px 50px 30px;
+}
+
+.publish_form input {
+    border: 0px;
+    font-size: 18px;
+    outline: none;
+}
+.input_content {
+    margin: 10px 0px 10px 10px;
+    flex: 1;
+
+}
+.transport_container{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.border_input {
+    border-right: 1px solid #CFCFCF;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+label {
+    color: #797777;
+    font-size: 19px;
+    margin-left: 6px;
+    margin-right: 4px;
+
+}
+
+#price {
+    width: 66%;
+}
+.last_input{
+margin-bottom: 40px;
+}
+
+.publish_button {
+    color: white;
+    width: 155px;
+    height: 40px;
+    border: none;
+    background: #DD0F0F;
+    border-radius: 10px;
+    font-size: 16px;
+    align-self: center;
+    display: block;
+    margin: 0 auto;
+
+}
+
+.publish_button:hover {
+
+    cursor: pointer;
+    background: #dd0f0faf;
+    transition: 0.3s ease-in-out;
+}
+
+/* style pour la div de liste des villes */
+
+.city_input_container {
+    position: relative;
+}
+
+.list_container {
+    display: none;
+    width: 370px;
+    height: fit-content;
+    position: absolute;
+    z-index: 1;
+    top: 45px;
+    background: #FFFFFF;
+    border: 1px solid #E4E4E4;
+    box-shadow: 0px 0px 6px 1px rgba(163, 163, 163, 0.25);
+    border-radius: 15px;
+    left: -14px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.li_container {
+    padding: 12px 18px;
+    border-bottom: 1px solid #cfcfcf57;
+}
+
+.li_container:hover {
+    background-color: hwb(0 73% 27% / 0.342);
+    cursor: pointer;
+}
+
+.countryName {
+    color: #797777;
+    
+}
+
+@media (max-width: 700px) {
+    .publish_form{
+        padding: 50px 14px 40px 14px;
+        margin: 0 20px 20px 20px;
+    }
+    .publish_container h3 {
+        font-size: 30px;
+    }
+    .input_container {
+        flex-direction: column;
+        align-items: baseline;
+    }
+    .input_content{
+        width: -webkit-fill-available;
+        margin: 0px 14px 0px 14px;
+        padding: 14px 0px 14px 0px;
+    }
+    select{
+        padding-top: 14px;
+        padding-bottom: 14px;
+    }
+    .transport_container{
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .border_input{
+        border-right: none;
+        border-bottom: 1px solid #CFCFCF;
+    }
+    .list_container{
+        width:calc(100% + 27px);
+        border-top-left-radius:0px;
+        border-top-right-radius:0px;
+        top: 60px;
+    }
+}
+@media (max-width: 390px) {
+    .input_content input{
+        width: 80%;
+    }
+
+    #weight{
+        width: 70%;
+    }
+    #price{
+        width:58%;
+    }
+}

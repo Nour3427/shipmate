@@ -1,0 +1,368 @@
+main {
+    background-color: #F7F7F7;
+}
+
+.search_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search_container h3 {
+    font-size: 40px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.search_form {
+    background: #FFFFFF;
+    border: 1px solid #E4E4E4;
+    box-shadow: 0px 0px 6px 1px rgba(163, 163, 163, 0.25);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+
+}
+
+form {
+    display: flex;
+}
+
+.input_container {
+    border-right: 1px solid #CFCFCF;
+    margin: 10px 0px 10px 10px;
+}
+
+.search_form input {
+    border: 0px;
+    font-size: 18px;
+    outline: none;
+}
+
+label {
+    color: #797777;
+    font-size: 19px;
+    margin-left: 6px;
+    margin-right: 4px;
+
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.weight_input {
+    border: none;
+    margin-left: 10px;
+}
+
+#weight {
+    width: 100px;
+}
+
+#search_button {
+    color: white;
+    width: 140px;
+    font-size: 18px;
+    border: none;
+    background: #DD0F0F;
+    height: 100%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.date_input_container {
+    border-right: 1px solid #CFCFCF;
+
+}
+
+.date_weight {
+    display: flex;
+    border: none;
+}
+
+.input_container_button {
+    margin-left: 10px;
+
+
+}
+
+#search_button:hover {
+    cursor: pointer;
+    background: #dd0f0faf;
+    transition: 0.3s ease-in-out;
+}
+
+/* style pour la div de liste des villes */
+
+.city_input_container {
+    position: relative;
+}
+
+.list_container {
+    display: none;
+    width: 370px;
+    height: fit-content;
+    position: absolute;
+    z-index: 1;
+    top: 45px;
+    background: #FFFFFF;
+    border: 1px solid #E4E4E4;
+    box-shadow: 0px 0px 6px 1px rgba(163, 163, 163, 0.25);
+    border-radius: 15px;
+    left: -14px;
+
+
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.li_container {
+    padding: 12px 18px;
+    border-bottom: 1px solid #cfcfcf57;
+}
+
+.li_container:hover {
+    background-color: hwb(0 73% 27% / 0.342);
+    cursor: pointer;
+}
+
+.countryName {
+    color: #797777;
+
+}
+
+/* /////////////////////////////////////////////////////////////////
+/* style pour le div qui contient le resultat de la recherche  */
+/* ///////////////////////////////////////////////////////////////// */
+
+.result_container {
+    width: 100%;
+    margin-top: 15px;
+    
+
+}
+
+.no_result {
+    display: flex;
+    margin-top: 100px;
+    justify-content: center;
+    color: GREY;
+
+}
+
+.search_results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+}
+.delivery_date{
+    margin-bottom: inherit;
+}
+
+.delivery_container {
+    background: #FFFFFF;
+    border: 1px solid #E4E4E4;
+    box-shadow: 0px 0px 6px 1px rgba(163, 163, 163, 0.25);
+    border-radius: 15px;
+    padding: 15px;
+    width: 600px;
+    margin-bottom: 20px;
+}
+
+.user_icon {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #D9D9D9;
+    color: rgb(255, 255, 255);
+}
+.user_name,.user_details{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.delivery_container span{
+    font-size: 15px;
+}
+.delivery_details{
+    display: flex;
+    margin-top: 10px;
+}
+
+.depart,.dest{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.line{
+    flex-grow: 1;
+    display: flex;
+    margin: 0 10px;
+    position: relative;
+    
+}
+.left_line, .right_line{
+    border: 1px solid #DD0F0F;
+    margin-top: 10px;
+    flex: 1;
+    height: 0;
+}
+.left_line::before{
+    content: "⭘";
+    position: absolute;
+    left: 0;
+    top: -1px;
+}
+.left_line{
+    margin-left: 13px;
+}
+.right_line{
+    margin-right: 13px;
+}
+.right_line::before{
+    content: "⭘";
+    position: absolute;
+    right: 0;
+    top: -1px;
+}
+.transport{
+    width: 70px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.transport i{
+    font-size: 24px;
+   
+
+}
+
+.transport p{
+    margin: 0;
+    font-size: 14px;
+    color: grey;
+}
+/* style pour le responsive  */
+@media (max-width: 1200px) {
+    .search_form {
+        width: 80%;
+    }
+
+    form {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    input {
+        width: 88%;
+    }
+
+    .input_container {
+        margin: 0px 14px 0px 14px;
+        padding: 14px 0px 14px 0px;
+        border-right: none;
+        border-bottom: 1px solid #CFCFCF;
+    }
+
+    .date_input_container {
+        width: 60%;
+        border-right: 1px solid #CFCFCF;
+        padding: 0;
+
+    }
+
+    .weight_input {
+        width: 40%;
+    }
+
+    #weight {
+        width: 70%;
+
+    }
+
+    .date_input {
+        width: 80%;
+    }
+
+    .input_container_button {
+        margin: 0;
+    }
+
+    #search_button {
+        width: 100%;
+        padding: 14px 14px 14px 14px;
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 15px;
+
+    }
+
+    .list_container {
+        width: calc(100% + 27px);
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        top: 60px;
+    }
+
+    .li_container {
+        padding: 5px 18px;
+    }
+}
+@media (max-width: 800px) {
+    .search_results {
+        width: 80%;
+    }
+    .delivery_container{
+        width: 90%;
+       }
+    }
+
+@media (max-width: 680px) {
+    .search_container h3 {
+        font-size: 30px;
+    }
+
+    .search_form,.search_results{
+        width: 90%;
+    }
+
+    .date_input_container {
+        width: 60%;
+    }
+
+    #weight {
+        width: 50%;
+
+    }
+}
+
+@media (max-width: 400px) {
+
+    #weight {
+        width: 30%;
+
+    }
+
+    input {
+        width: 80%;
+    }
+    .delivery_container span, .delivery_details p{
+        font-size: 11px;
+    }
+    .transport i{
+        font-size: 17px;
+    }
+}

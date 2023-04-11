@@ -1,0 +1,334 @@
+.profile_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.profile_container h3 {
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.profile_details_container {
+    border: 1px solid #D4CFCF;
+    width: 900px;
+
+
+}
+
+.titles {
+    display: flex;
+    background: rgba(217, 217, 217, 0.01);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.07);
+    font-size: 16px;
+}
+
+.titles div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+.titles div:hover{
+    cursor: pointer;
+}
+
+.informations {
+    border-bottom: 2px solid black;
+}
+
+.informations_details {
+    padding: 50px 20px;
+
+}
+
+/* form {
+    width: 100%;
+} */
+
+.informations_details label {
+    display: block;
+    color: #848080;
+    font-size: 15px;
+    width: 30%;
+
+}
+
+.informations_details input {
+    width: 60%;
+    padding: 12px 8px;
+    border: 1px solid rgba(174, 168, 168, 0.9);
+    border-radius: 7px;
+    outline: none;
+}
+
+form div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modify_button {
+    color: white;
+    height: 40px;
+    border: none;
+    background: #DD0F0F;
+    border-radius: 10px;
+    font-size: 16px;
+    align-self: center;
+    display: block;
+    margin: 0 auto;
+    padding: 0 12px;
+
+}
+
+.modify_button:hover {
+
+    cursor: pointer;
+    background: #dd0f0faf;
+    transition: 0.3s ease-in-out;
+}
+
+/* style pour la section de annonces */
+.announcement_details, .request_details_container {
+    padding: 50px;
+    display: none;
+}
+
+h4 {
+    /* font-size: 30px; */
+    font-weight: 400;
+}
+
+/* /////////////////////////////////////////////////////////////////
+/* style pour le div qui contient les annonces */
+/* ///////////////////////////////////////////////////////////////// */
+
+.result_container {
+    width: 100%;
+    margin-top: 15px;
+
+
+}
+
+.no_result {
+    display: flex;
+    margin-top: 100px;
+    justify-content: center;
+    color: GREY;
+
+}
+
+.search_results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+}
+
+.delivery_date {
+    margin-bottom: inherit;
+    color: rgb(50 138 215);
+}
+
+.delivery_container {
+    background: #FFFFFF;
+    border: 1px solid #E4E4E4;
+    box-shadow: 0px 0px 6px 1px rgba(163, 163, 163, 0.25);
+    border-radius: 15px;
+    padding: 15px;
+    width: 600px;
+    margin-bottom: 20px;
+}
+
+.user_icon {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #D9D9D9;
+    color: rgb(255, 255, 255);
+}
+
+.user_name,
+.user_details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.delivery_container span {
+    font-size: 15px;
+}
+
+.delivery_details {
+    display: flex;
+    margin-top: 10px;
+}
+
+.depart,
+.dest {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.line {
+    flex-grow: 1;
+    display: flex;
+    margin: 0 10px;
+    position: relative;
+
+}
+
+.left_line,
+.right_line {
+    border: 1px solid #DD0F0F;
+    margin-top: 10px;
+    flex: 1;
+    height: 0;
+}
+
+.left_line::before {
+    content: "⭘";
+    position: absolute;
+    left: 0;
+    top: -1px;
+}
+
+.left_line {
+    margin-left: 13px;
+}
+
+.right_line {
+    margin-right: 13px;
+}
+
+.right_line::before {
+    content: "⭘";
+    position: absolute;
+    right: 0;
+    top: -1px;
+}
+
+.transport {
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.transport i {
+    font-size: 24px;
+
+
+}
+
+.transport p {
+    margin: 0;
+    font-size: 14px;
+    color: grey;
+}
+.hover_div:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 6px 1px rgba(37, 131, 238, 0.993);
+    transition: 0.3s ease-in-out;
+}
+
+
+/* /////////////////////////////////////////////////////////////////
+/* style pour la liste de demande   */
+/* ///////////////////////////////////////////////////////////////// */
+.requests_list {
+    border: 1px solid #D4CFCF;
+}
+
+.requests_container {
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #D4CFCF;
+}
+.delivery_requests{
+    display: none;
+}
+
+.titles_list,
+.request_details {
+    display: flex;
+}
+
+.request_details {
+    padding: 15px 0px;
+    border-bottom: 1px solid #D4CFCF;
+}
+
+.titles_list div {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background: #F8F8F8;
+    border: 1px solid #D1D1D1;
+}
+
+.titles_list p {
+    margin: 4px 0px;
+
+}
+
+.request_user {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.request_user i {
+    font-size: 20px;
+}
+
+.user_icon {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #D9D9D9;
+    color: rgb(255, 255, 255);
+}
+
+#accepter {
+    color: white;
+    border: none;
+    background: #DD0F0F;
+    font-size: 14px;
+    border-radius: 5px;
+    align-self: center;
+    padding: 6px 10px;
+
+}
+
+#accepter:hover {
+
+    cursor: pointer;
+    background: #dd0f0faf;
+    transition: 0.3s ease-in-out;
+}
+.font-cirle{
+    margin-left:10px;
+}
+.st i{
+    margin-left: 10px;
+}
+.st{
+    padding-top: 10px;
+}
