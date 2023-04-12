@@ -1,3 +1,7 @@
+
+<?php require '../app/config.php';
+require '../lib/functions.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="<?=asset('css/style.css');?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>ShipMate</title>
 </head>
@@ -17,7 +21,7 @@ include './header.phtml'
     <main>
         <section class="banner">
             <div class="home_image">
-                <img src="./images/banner.png" alt="banner">
+                <img src="<?=asset('images/banner.png');?>" alt="banner">
             </div>
         </section>
         <section class="introduction">
@@ -60,7 +64,7 @@ include './header.phtml'
         <section class="indications">
             <div class="indications_container">
                 <div class="world_image content">
-                    <img src="./images/delivery.jpg" alt="">
+                    <img src="<?=asset('images/delivery.jpg');?>" alt="">
                 </div>
                 <div class=" content">
                     <div class="how_doesit_work">
@@ -104,7 +108,7 @@ include './header.phtml'
                     <p class="definition">En devenant membre, vous pourrez économiser de l'argent, aider la communauté et participer à une démarche respectueuse de l'environnement.</p>
                     <div class="red_banner_container">
                         <div class="red_banner_content">
-                            <img src="./images/paper-plane-3.png" alt="">
+                            <img src="<?=asset('images/paper-plane-3.png');?>" alt="">
                             <div class="red_banner_description service_description">
                                 <h4>Quand vous expédiez</h4>
                                 <p>Payez vos envois moins chers</p>
@@ -112,7 +116,7 @@ include './header.phtml'
                             </div>
                         </div>
                         <div class="red_banner_content">
-                            <img src="./images/delivery-icon.png" alt="">
+                            <img src="<?=asset('images/delivery-icon.png');?>" alt="">
                             <div class="red_banner_description service_description">
                                 <h4>Quand vous livrez</h4>
                                 <p>Remboursez vos frais de route.</p>
@@ -121,13 +125,13 @@ include './header.phtml'
 
                         </div>
                     </div>
-                    <button type="button">M'inscrire</button>
+                    <a class="button_link" href="./connexion.php"><button type="button">M'inscrire</button></a>
 
 
                 </div>
 
                 <div class="member_img">
-                    <img src="./images/shipm.png" alt="">
+                    <img src="<?=asset('images/shipm.png');?>" alt="">
                 </div>
             </div>
         </section>

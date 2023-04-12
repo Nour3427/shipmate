@@ -9,7 +9,16 @@ body {
     padding: 0;
     background-color: #F7F7F7;
 }
-a{
+
+body:not(input) {
+    caret-color: transparent;
+}
+
+input {
+    caret-color: auto;
+}
+
+a {
     text-decoration: none;
     color: #3273A3;
 }
@@ -61,11 +70,13 @@ nav {
     color: black;
 
 }
-.icon:hover{
+
+.icon:hover {
     color: #428dc3;
     cursor: pointer;
 }
-.icon p:hover{
+
+.icon p:hover {
     color: #428dc3;
 }
 
@@ -93,27 +104,32 @@ nav {
     color: rgb(85, 85, 85);
     margin-right: 20px;
 }
-.user_icon{
+
+.user_icon {
     width: 30px;
     height: 30px;
     font-size: 18px;
     margin-right: 10px;
 }
-#user_name{
+
+#user_name {
     border: none;
 }
-#login_icon{
+
+#login_icon {
     display: inline-block;
     margin-right: 0px;
 }
-#connexion_link{
+
+#connexion_link {
     display: flex;
     text-decoration: none;
-    color: #3273A3 ;
+    color: #3273A3;
     font-size: 15px;
     padding-right: 10px;
 }
-.seConnecter{
+
+.seConnecter {
     display: flex;
     align-items: center;
 }
@@ -134,7 +150,7 @@ nav {
 
 }
 
-.m{
+.m {
     color: #C60606;
 }
 
@@ -158,7 +174,7 @@ nav {
 
 }
 
-.definition{
+.definition {
     font-family: 'Quicksand';
     font-weight: 600;
     font-size: 18px;
@@ -177,7 +193,7 @@ nav {
 .shipmate_details_container {
     max-width: 70%;
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
 }
 
 .shipmate_details_content {
@@ -196,65 +212,79 @@ nav {
     margin-bottom: 0;
     margin-top: 20px;
 }
-.details{
+
+.details {
     align-self: center;
     color: #31313184;
 }
-.indications_container{
+
+.indications_container {
     display: flex;
     padding-top: 100px;
     padding-bottom: 100px;
 
     /* background-color:  #F2F2F2; */
 }
-.content{
+
+.content {
     flex: 1;
     display: flex;
     align-items: center;
     flex-direction: column;
-   
+
 }
-.content img{
+
+.content img {
     width: 500px;
     height: 500px;
 }
-.how_doesit_work h1{
-font-weight: 400;
-font-size: 36px;
-line-height: 54px;
-margin-bottom: 0;
+
+.how_doesit_work h1 {
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 54px;
+    margin-bottom: 0;
 }
-.how_doesit_work h2{
-font-weight: 300;
-font-size: 28px;
-line-height: 40px;
-margin-top: 0;
+
+.how_doesit_work h2 {
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 40px;
+    margin-top: 0;
 }
-.how_doesit_work{
+
+.how_doesit_work {
     max-width: 70%;
 
 }
-.how_doesit_work p{
+
+.how_doesit_work p {
     font-size: 15px;
-/* line-height: 21px; */
+    /* line-height: 21px; */
 }
-.world_image{
-    justify-content: center ;
+
+.world_image {
+    justify-content: center;
 }
-.services{
+
+.services {
     display: flex;
     margin-top: 24px;
 }
+
 .services i {
     color: #C60606;
 }
-.fa{
+
+.fa {
     font-size: 26px;
 }
-.msg{
+
+.msg {
     font-size: 20px;
 }
-.service_description h4{
+
+.service_description h4 {
     font-weight: 600;
     font-size: 16px;
     margin-bottom: 0;
@@ -263,72 +293,84 @@ margin-top: 0;
 
 
 }
-.service_description p{
+
+.service_description p {
     font-size: 13px;
-    color: #313131bd;    
+    color: #313131bd;
 
 }
-.des{
+
+.des {
     margin-left: 20px;
 }
-.message{
+
+.message {
     margin-left: 15px;
 }
+
 /* style for last section */
-.shipmate_member_container{
+.shipmate_member_container {
     background-color: white;
     padding: 100px 20px 100px 20px;
     display: flex;
     justify-content: space-between;
 }
-.shipmate_member_content{
-max-width: 60%;
-display: flex;
-flex-direction: column;
-padding-right: 30px;
+
+.shipmate_member_content {
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    padding-right: 30px;
 }
-.member_img{
+
+.member_img {
     max-width: 40%;
     display: flex;
     align-items: center;
 }
-.member_img img{
-    
+
+.member_img img {
+
     max-width: 100%;
-    height:auto; 
-    
+    height: auto;
+
 }
 
 
-.red_banner_content img{
+.red_banner_content img {
     width: 35px;
     height: 35px;
 }
-.red_banner_content{
+
+.red_banner_content {
     display: flex;
     padding: 20px 10px 20px 10px;
     width: 45%;
     box-shadow: 2px 2px 8px 2px rgba(58, 58, 58, 0.299);
-    border-bottom: 15px solid #C60606 ;
-    
+    border-bottom: 15px solid #C60606;
+
 }
-.red_banner_container{
+
+.red_banner_container {
     display: flex;
     justify-content: space-between;
     padding-top: 50px;
     padding-bottom: 50px;
 }
-.red_banner_description{
+
+.red_banner_description {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-left: 10px;
 }
-.red_banner_description p{
+
+.red_banner_description p {
     margin: 0;
     line-height: 30px;
 }
-.shipmate_member_content button{
+
+.shipmate_member_content button {
     background-color: #C60606;
     color: white;
     padding: 5px 30px 5px 30px;
@@ -339,21 +381,28 @@ padding-right: 30px;
     max-width: fit-content;
     align-self: center;
 }
-.shipmate_member_content button:hover{
+
+.button_link {
+    text-align: center;
+}
+
+.shipmate_member_content button:hover {
     cursor: pointer;
     background: #dd0f0faf;
     transition: 0.3s ease-in-out;
 }
+
 /*style pour le footer */
-.social_media_container{
+.social_media_container {
     background-color: #3F3B3B;
     padding-top: 20px;
     padding-bottom: 20px;
     display: flex;
-    justify-content:space-evenly ;
+    justify-content: space-evenly;
 
 }
-.social_media{
+
+.social_media {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -362,100 +411,111 @@ padding-right: 30px;
     justify-content: center;
     align-items: center;
 }
-.social_media:hover{
+
+.social_media:hover {
     cursor: pointer;
-    background:  #cfcdcde9;
+    background: #cfcdcde9;
 
 }
 
-.copyright{
-    padding-top:7px;
-    padding-bottom:7px;
+.copyright {
+    padding-top: 7px;
+    padding-bottom: 7px;
     display: flex;
     justify-content: center;
     font-size: 14px;
 }
 
-                 /* ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-                /* ------------------style pour le responsive------------------- */
-                /* ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/* ------------------style pour le responsive------------------- */
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
- /*style de la derniere section */
+/*style de la derniere section */
 
- @media (max-width: 1580px) {
-    .shipmate_member_container{
+@media (max-width: 1580px) {
+    .shipmate_member_container {
         flex-direction: column;
         align-items: center;
     }
-    .shipmate_member_content{
+
+    .shipmate_member_content {
         max-width: 100%;
- }
- .member_img{
-    max-width: 70%;
-    margin-top: 15px;
- }
- }
- @media (max-width: 1050px) {
-    
-    .red_banner_container{
+    }
+
+    .member_img {
+        max-width: 70%;
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 1050px) {
+
+    .red_banner_container {
         flex-direction: column;
         align-items: center;
     }
-    .red_banner_content{
+
+    .red_banner_content {
         margin-bottom: 20px;
         width: 70%;
     }
-   
+
     /* style de la section "comment ça marche"*/
-    .indications_container{
+    .indications_container {
         flex-direction: column;
     }
 
- }
- @media (max-width: 850px) {
-    .search p{
+}
+
+@media (max-width: 850px) {
+    .search p {
         display: none;
     }
+
     .publish p {
         display: none;
     }
-    .user_icon{
+
+    .user_icon {
         width: 30px;
         height: 30px;
         font-size: 20px;
         margin-right: 10px;
     }
-    .user{
+
+    .user {
         margin-right: 20px;
         padding-left: 20px;
     }
+
     .logo img {
         height: 50px;
     }
-    .shipmate_details_container{
+
+    .shipmate_details_container {
         flex-direction: column;
     }
-    .shipmate_details_content{
+
+    .shipmate_details_content {
         max-width: 100%;
     }
-    .content img{
+
+    .content img {
         width: auto;
         height: auto;
     }
-    .home_image{
+
+    .home_image {
         background-color: white;
-        padding-bottom:100px ;
-        padding-top:100px
+        padding-bottom: 100px;
+        padding-top: 100px
     }
-  
+
 }
+
 @media (max-width: 450px) {
-    .seConnecter{
+    .seConnecter {
         display: none;
     }
 
 }
-
-
-
-   
