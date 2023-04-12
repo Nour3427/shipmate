@@ -64,8 +64,6 @@
                         <div class="password">
                             <label for="new_password">Nouveau mot de passe</label>
                             <input type="password" id='new_password' name='new_password'>
-
-
                         </div>
                         <button class="modify_button" type="submit" name='modify_submit'>Modifier mes informations</button>
 
