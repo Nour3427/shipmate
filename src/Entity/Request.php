@@ -1,18 +1,21 @@
 <?php 
 namespace App\Entity;
-use App\Entity\City;
 use App\Entity\Delivery;
-use DateTimeImmutable;
+use App\Entity\User;
+
 
 
 class Request{
     private int $idRequest;
-    private City $departure_city;
-    private City $destination_city;
+    private string $departure_city;
+    private string $destination_city;
     private Delivery $delivery;
     private User $user;
-    private DateTimeImmutable $sending_date;
-    private int  $weight;
+    private string $sending_date;
+    private string  $weight;
+    private string  $status;
+
+    
     
     public function __construct(array $data = [])
     {
@@ -23,6 +26,9 @@ class Request{
             }
         }
     } 
+    
+    
+
     /**
      * Get the value of idRequest
      */
@@ -44,7 +50,7 @@ class Request{
     /**
      * Get the value of departure_city
      */
-    public function getDepartureCity(): City
+    public function getDeparture_city(): string
     {
         return $this->departure_city;
     }
@@ -52,7 +58,7 @@ class Request{
     /**
      * Set the value of departure_city
      */
-    public function setDepartureCity(City $departure_city): self
+    public function setDeparture_city(string $departure_city): self
     {
         $this->departure_city = $departure_city;
 
@@ -62,7 +68,7 @@ class Request{
     /**
      * Get the value of destination_city
      */
-    public function getDestinationCity(): City
+    public function getDestination_city(): string
     {
         return $this->destination_city;
     }
@@ -70,7 +76,7 @@ class Request{
     /**
      * Set the value of destination_city
      */
-    public function setDestinationCity(City $destination_city): self
+    public function setDestination_city(string $destination_city): self
     {
         $this->destination_city = $destination_city;
 
@@ -116,7 +122,7 @@ class Request{
     /**
      * Get the value of sending_date
      */
-    public function getSendingDate(): DateTimeImmutable
+    public function getSending_date(): string
     {
         return $this->sending_date;
     }
@@ -124,7 +130,7 @@ class Request{
     /**
      * Set the value of sending_date
      */
-    public function setSendingDate(DateTimeImmutable $sending_date): self
+    public function setSending_date(string $sending_date): self
     {
         $this->sending_date = $sending_date;
 
@@ -134,7 +140,7 @@ class Request{
     /**
      * Get the value of weight
      */
-    public function getWeight(): int
+    public function getWeight(): string
     {
         return $this->weight;
     }
@@ -142,10 +148,29 @@ class Request{
     /**
      * Set the value of weight
      */
-    public function setWeight(int $weight): self
+    public function setWeight(string $weight): self
     {
         $this->weight = $weight;
 
         return $this;
     }
+
+    /**
+     * Get the value of status
+     */
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set the value of status
+     */
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
 }
+    

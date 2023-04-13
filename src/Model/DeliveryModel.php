@@ -3,10 +3,8 @@
 namespace App\Model;
 
 use App\Core\AbstractModel;
-use App\Entity\City;
 use App\Entity\Delivery;
 use App\Entity\User;
-use DateTimeImmutable;
 
 
 class DeliveryModel extends AbstractModel
@@ -14,14 +12,14 @@ class DeliveryModel extends AbstractModel
 
     // insérer les livraisons proposées par les utilisateurs 
 
-    function addDelivery(City $departure_city, City $destination_city, User $user, DateTimeImmutable $departure_time, DateTimeImmutable $arrival_time, DateTimeImmutable $delivery_date, int $weight_limit, float $price)
+    function addDelivery(string $departure_city, string $destination_city, User $user,string $departure_time, string $arrival_time, string $sending_date, string $weight_limit, string $price, string $transport_tool)
     {
 
         $sql = 'INSERT INTO delivery 
-    (departure_city, destination_city,user_id, $departure_time, $arrival_time, delivery_date, weight_limit, price)
-     VALUES (?,?,?,?,?,?,?)';
+    (departure_city, destination_city,user_id, $departure_time, $arrival_time, sending_date, weight_limit, price)
+     VALUES (?,?,?,?,?,?,?,?,?)';
 
-        $this->db->prepareAndExecute($sql, [$departure_city, $destination_city, $user, $departure_time, $arrival_time, $delivery_date, $weight_limit, $price]);
+        $this->db->prepareAndExecute($sql, [$departure_city, $destination_city, $user, $departure_time, $arrival_time, $sending_date, $weight_limit, $price,$transport_tool]);
     }
 
     //récupérer toutes les livraisons proposées par la ville de départ et de destination 

@@ -2,22 +2,21 @@
 
 namespace App\Entity;
 
-use App\Entity\City;
 use App\Entity\User;
-use DateTimeImmutable;
 
 
 class Delivery
 {
     private int $idDelivery;
-    private City $departure_city;
-    private City $destination_city;
+    private string $departure_city;
+    private string $destination_city;
     private User $user;
-    private DateTimeImmutable $departure_time;
-    private DateTimeImmutable $arrival_time;
-    private DateTimeImmutable $delivery_date;
+    private string $departure_time;
+    private string $arrival_time;
+    private string $sending_date;
+    private string $transport_tool;
     private int  $weight_limit;
-    private float $price;
+    private string $price;
 
     // data est un tableau qui contient toutes les colonnes de la table DB "Delivery" et leur valeurs
     public function __construct(array $data = [])
@@ -32,6 +31,8 @@ class Delivery
             }
         }
     }
+    
+
     /**
      * Get the value of idDelivery
      */
@@ -53,7 +54,7 @@ class Delivery
     /**
      * Get the value of departure_city
      */
-    public function getDepartureCity(): City
+    public function getDeparture_city(): string
     {
         return $this->departure_city;
     }
@@ -61,7 +62,7 @@ class Delivery
     /**
      * Set the value of departure_city
      */
-    public function setDepartureCity(City $departure_city): self
+    public function setDeparture_city(string $departure_city): self
     {
         $this->departure_city = $departure_city;
 
@@ -71,7 +72,7 @@ class Delivery
     /**
      * Get the value of destination_city
      */
-    public function getDestinationCity(): City
+    public function getDestination_city(): string
     {
         return $this->destination_city;
     }
@@ -79,7 +80,7 @@ class Delivery
     /**
      * Set the value of destination_city
      */
-    public function setDestinationCity(City $destination_city): self
+    public function setDestination_city(string $destination_city): self
     {
         $this->destination_city = $destination_city;
 
@@ -107,7 +108,7 @@ class Delivery
     /**
      * Get the value of departure_time
      */
-    public function getDepartureTime(): DateTimeImmutable
+    public function getDeparture_time(): string
     {
         return $this->departure_time;
     }
@@ -115,7 +116,7 @@ class Delivery
     /**
      * Set the value of departure_time
      */
-    public function setDepartureTime(DateTimeImmutable $departure_time): self
+    public function setDeparture_time(string $departure_time): self
     {
         $this->departure_time = $departure_time;
 
@@ -125,7 +126,7 @@ class Delivery
     /**
      * Get the value of arrival_time
      */
-    public function getArrivalTime(): DateTimeImmutable
+    public function getArrival_time(): string
     {
         return $this->arrival_time;
     }
@@ -133,7 +134,7 @@ class Delivery
     /**
      * Set the value of arrival_time
      */
-    public function setArrivalTime(DateTimeImmutable $arrival_time): self
+    public function setArrival_time(string $arrival_time): self
     {
         $this->arrival_time = $arrival_time;
 
@@ -141,19 +142,19 @@ class Delivery
     }
 
     /**
-     * Get the value of delivery_date
+     * Get the value of sending_date
      */
-    public function getDeliveryDate(): DateTimeImmutable
+    public function getSending_date(): string
     {
-        return $this->delivery_date;
+        return $this->sending_date;
     }
 
     /**
-     * Set the value of delivery_date
+     * Set the value of sending_date
      */
-    public function setDeliveryDate(DateTimeImmutable $delivery_date): self
+    public function setSending_date(string $sending_date): self
     {
-        $this->delivery_date = $delivery_date;
+        $this->sending_date = $sending_date;
 
         return $this;
     }
@@ -161,7 +162,7 @@ class Delivery
     /**
      * Get the value of weight_limit
      */
-    public function getWeightLimit(): int
+    public function getWeight_limit(): int
     {
         return $this->weight_limit;
     }
@@ -169,7 +170,7 @@ class Delivery
     /**
      * Set the value of weight_limit
      */
-    public function setWeightLimit(int $weight_limit): self
+    public function setWeight_limit(int $weight_limit): self
     {
         $this->weight_limit = $weight_limit;
 
@@ -179,7 +180,7 @@ class Delivery
     /**
      * Get the value of price
      */
-    public function getPrice(): float
+    public function getPrice(): string
     {
         return $this->price;
     }
@@ -187,9 +188,27 @@ class Delivery
     /**
      * Set the value of price
      */
-    public function setPrice(float $price): self
+    public function setPrice(string $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of transport_tool
+     */
+    public function getTransport_tool(): string
+    {
+        return $this->transport_tool;
+    }
+
+    /**
+     * Set the value of transport_tool
+     */
+    public function setTransport_tool(string $transport_tool): self
+    {
+        $this->transport_tool = $transport_tool;
 
         return $this;
     }
