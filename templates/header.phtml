@@ -3,7 +3,7 @@
         <div class="nav_container">
             <div class="logo">
 
-                <a href="./home.php"><img src="<?=asset('images/logo.png');?>" alt=""></a>
+                <a href="../templates/home.php"><img src="<?=asset('images/logo.png');?>" alt=""></a>
             </div>
             <div class="nav_links">
                 <div class="links">
@@ -23,7 +23,6 @@
 
                 </div>
                 <?php
-                session_start();
                 // Vérifier si l'utilisateur est connecté
                 if (isset($_SESSION['idUser'])) {
                     var_dump($_SESSION['idUser']);
@@ -43,7 +42,7 @@
                 <?php } else { ?>
 
                     <div class="user icon" id="login_icon">
-                        <a id="connexion_link" href="./connexion.php">
+                        <a id="connexion_link" href="../controllers/Connexion.php">
                             <div class="circle_icon user_icon">
                                 <i class="fa-solid fa-user"></i>
                             </div>

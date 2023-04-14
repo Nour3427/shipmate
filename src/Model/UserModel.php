@@ -4,6 +4,7 @@ namespace App\Model;
 
 use App\Core\AbstractModel;
 use App\Entity\User;
+use LDAP\Result;
 
 class UserModel extends AbstractModel
 {
@@ -51,10 +52,12 @@ class UserModel extends AbstractModel
 
         if (!$result) {
             // L'utilisateur n'existe pas
-            return false;
+            return null;
         } else {
-            // $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-            return $password == $result['password'];
+            if (password_verify($password, $result['password'])) {
+                return new User($result);
+            }
+            return null;
         }
     }
 }

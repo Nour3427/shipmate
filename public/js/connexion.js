@@ -12,20 +12,23 @@ login_link.addEventListener('click',function(event){
 
 // password visibility 
 
-const password_toggle=document.querySelector('.password_toggle_button');
-const password_input=document.querySelector('.password_input');
-
-password_toggle.addEventListener('click',function(){
-    if(password_input.type==='text'){
-         password_input.type='password';
-        password_toggle.innerHTML='<i class="fas fa-eye-slash"></i>';
+const password_toggle=document.querySelectorAll('.password_toggle_button');
+const password_input=document.querySelectorAll('.password_input');
+for(let i=0; i<password_toggle.length;i++){
+password_toggle[i].addEventListener('click',function(e){
+    e.preventDefault();
+    if(password_input[i].type==='text'){
+         password_input[i].type='password';
+        password_toggle[i].innerHTML='<i class="fas fa-eye-slash"></i>';
         
     }
     else{
-       password_input.type='text';
-        password_toggle.innerHTML='<i class="fa-solid fa-eye"></i>';
+       password_input[i].type='text';
+        password_toggle[i].innerHTML='<i class="fa-solid fa-eye"></i>';
     }
+
 })
+}
 
 
 

@@ -1,6 +1,7 @@
-<?php require '../app/config.php';
-require '../lib/functions.php';
-?>
+<!-- 
+ require '../app/config.php';
+require '../lib/functions.php'; -->
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,8 +10,8 @@ require '../lib/functions.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?=asset('css/style.css');?>">
-    <link rel="stylesheet" href="<?=asset('css/login_style.css');?>">
+    <link rel="stylesheet" href="<?= asset('css/style.css'); ?>">
+    <link rel="stylesheet" href="<?= asset('css/login_style.css'); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Document</title>
@@ -18,14 +19,16 @@ require '../lib/functions.php';
 
 <body>
     <?php
-    include './header.phtml'
+    include '../templates/header.phtml';
     ?>
     <main>
         <div class="form_container">
             <div class=" image form">
-                <img src="<?=asset('images/register.PNG');?>" alt="">
+                <img src="<?= asset('images/register.PNG'); ?>" alt="">
             </div>
-            <div class="login form" id="login">
+            <div class="login form" id="login" <?php if ($_SESSION['show_signup']) {
+                                                    echo 'style="display:none"';
+                                                } ?>>
                 <div class="login_container">
                     <h3>Je me connecte</h3>
                     <button class="facebook_button" type="button">
@@ -41,20 +44,30 @@ require '../lib/functions.php';
                         <div class="divider"></div>
                     </div>
                     <div class="login_input ">
-                        <input class="email_input " type="text" placeholder=" Adresse e-mail " name="email">
-                        <div class="password_container">
-                            <input class="password_input" type="password" placeholder=" Mot de passe " name="password">
-                            <div class="eye"><button class="password_toggle_button"><i class="fas fa-eye-slash"></i></button></div>
-                        </div>
-                        <a href="">Mot de passe oublié ?</a>
-                        <button class="log_sign_button" type="submit" name='login_submit'>Se connecter</button>
-                        <p>Vous n’avez pas encore de compte ?<a href="" id="login_link"> Inscrivez-vous</a></p>
+                        <form action="" method="post"> 
+                            <?php if (isset($error_message)) : ?>
+                                <p class="error"><?= $error_message; ?></p>
+                            <?php endif; ?>
+                            <input class="email_input " type="text" placeholder=" Adresse e-mail " name="login_email">
+                            <div class="password_container">
+                                <input class="password_input" type="password" placeholder=" Mot de passe " name="login_password">
+                                <div class="eye"><button class="password_toggle_button"><i class="fas fa-eye-slash"></i></button></div>
+                            </div>
+
+                            <a class="forgot_password" href="">Mot de passe oublié ?</a>
+                            <button class="log_sign_button" type="submit" name='login_submit'>Se connecter</button>
+                            
+
+                            <p>Vous n’avez pas encore de compte ?<a href="" id="login_link"> Inscrivez-vous</a></p>
+                        
 
                     </div>
                 </div>
 
             </div>
-            <div class="sign_up login form" id="signup">
+            <div class="sign_up login form" id="signup" <?php if ($_SESSION['show_signup']) {
+                                                            echo 'style="display:flex"';
+                                                        } ?>>
 
                 <div class="login_container">
                     <h3>Je crée un compte </h3>
@@ -76,14 +89,34 @@ require '../lib/functions.php';
                             <p>S'inscrire avec une adresse e-mail</p>
                         </div>
                     </button>
-                    <div class="signup_input">
+                    <div class="signup_input" id="signup_input">
                         <p>Saisissez vos informations pour continuer</p>
-                        <input type="text" placeholder=" Votre nom " name="lastname">
-                        <input type="text" placeholder=" Votre prénom " name="firstname">
-                        <input type="text" placeholder=" Votre numéro de téléphone " name="phone_number">
-                        <input type="text" placeholder=" Votre adresse e-mail " name="email">
-                        <input type="password" placeholder=" Votre mot de passe " name="password">
-                        <button class="log_sign_button sign" type="submit" name='signup_submit'>Se connecter</button>
+                        <form action="Connexion.php" method="post">
+                            <input type="text" placeholder=" Votre nom " name="lastname" value="<?= $lastname; ?>">
+                            <?php if (isset($errors['lastname'])) : ?>
+                                <p class="error"><?= $errors['lastname']; ?></p>
+                            <?php endif; ?>
+                            <input type="text" placeholder=" Votre prénom " name="firstname" value="<?= $firstname; ?>">
+                            <?php if (isset($errors['firstname'])) : ?>
+                                <p class="error"><?= $errors['firstname']; ?></p>
+                            <?php endif; ?>
+                            <input type="text" placeholder=" Votre numéro de téléphone " name="phone_number" value="<?= $phone_number; ?>">
+                            <?php if (isset($errors['phone_number'])) : ?>
+                                <p class="error"><?= $errors['phone_number']; ?></p>
+                            <?php endif; ?>
+                            <input type="email" placeholder=" Votre adresse e-mail " name="email" value="<?= $email; ?>">
+                            <?php if (isset($errors['email'])) : ?>
+                                <p class="error"><?= $errors['email']; ?></p>
+                            <?php endif; ?>
+                            <div class="signup_password">
+                                <input type="password" class="password_input" placeholder=" Votre mot de passe " name="password">
+                                <div class="eye"><button class="password_toggle_button"><i class="fas fa-eye-slash"></i></button></div>
+                            </div>
+                            <?php if (isset($errors['password'])) : ?>
+                                <p class="error"><?= $errors['password']; ?></p>
+                            <?php endif; ?>
+                            <button class="log_sign_button sign" type="submit" name='signup_submit'>Se connecter</button>
+                        </form>
                         <p>Vous avez déjà un compte ?<a href="" id="signup_link"> Connectez-vous</a></p>
 
                     </div>
@@ -95,7 +128,7 @@ require '../lib/functions.php';
         </div>
 
     </main>
-    <script src="<?=asset('js/connexion.js');?>"></script>
+    <script src="<?= asset('js/connexion.js'); ?>"></script>
 </body>
 
 </html>

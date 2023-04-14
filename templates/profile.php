@@ -198,7 +198,7 @@ require '../lib/functions.php';
                 <div class="request_details_container">
                     <h4>Mes livraisons</h4>
                     <?php
-                    $status=null;
+                    $status='accepté';
                     $transport = 'avion';
                     $results = ["a","n"];
                     if (count($results) == 0) { ?>
