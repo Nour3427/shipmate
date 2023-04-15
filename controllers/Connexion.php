@@ -27,6 +27,12 @@ $email = '';
 $login_email = '';
 $error_message = '';
 
+/* if(isset($_POST['signout_submit'])){
+    $loggedUser = $_SESSION['user_logged_in'];
+    unset($_SESSION['user_logged_in']);
+    unset($_SESSION['user_logged_in_name']);
+} */
+
 if (isset($_POST['signup_submit'])) {
     $firstname = dataSecure($_POST['firstname']);
     $lastname = dataSecure($_POST['lastname']);
@@ -84,10 +90,16 @@ if (isset($_POST['login_submit'])) {
         $error_message = 'Veuillez remplir tous les champs';
     } else {
         $user = $UserModel->verifyLogin($login_email, $login_password);
+       
         if ($user == null) {
             $error_message = 'Email ou mot de passe incorrect';
         } else {
-            $error_message = 'connecté';
+            // $error_message = 'connecté';
+            // $user contains user object
+            $_SESSION['user_logged_in_id'] = $user->getIdUser();
+            $_SESSION['user_logged_in_name'] = $user->getFirstname();
+            header("Location: home.php");
+            exit();
         }
     }
 }
@@ -100,4 +112,5 @@ if (isset($_POST['signup_submit'])) {
     $_SESSION['show_signup'] = false;
 }
 // If 'show_signup' is true, the 'login' div is hidden and the 'signup' div is displayed.
-include '../templates/connexion.php';
+$template='connexion';
+include '../templates/base.phtml';

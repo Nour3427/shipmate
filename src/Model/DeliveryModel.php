@@ -12,30 +12,32 @@ class DeliveryModel extends AbstractModel
 
     // insérer les livraisons proposées par les utilisateurs 
 
-    function addDelivery(string $departure_city, string $destination_city, User $user,string $departure_time, string $arrival_time, string $sending_date, string $weight_limit, string $price, string $transport_tool)
+    function addDelivery(Delivery $delivery)
     {
 
         $sql = 'INSERT INTO delivery 
-    (departure_city, destination_city,user_id, $departure_time, $arrival_time, sending_date, weight_limit, price)
+    (departure_city, destination_city,user_id, departure_time, arrival_time, sending_date, weight_limit, price, transport_tool)
      VALUES (?,?,?,?,?,?,?,?,?)';
 
-        $this->db->prepareAndExecute($sql, [$departure_city, $destination_city, $user, $departure_time, $arrival_time, $sending_date, $weight_limit, $price,$transport_tool]);
+        $this->db->prepareAndExecute($sql, [
+            $delivery->getDeparture_city(), $delivery->getDestination_city(),
+            $delivery->getUser()->getIdUser(), $delivery->getDeparture_time(), $delivery->getArrival_time(),
+            $delivery->getSending_date(), $delivery->getWeight_limit(), $delivery->getPrice(), $delivery->getTransport_tool()
+        ]);
     }
 
     //récupérer toutes les livraisons proposées par la ville de départ et de destination 
-    function getAllDeliveriesByDepartureCityAndDestinationCity($departure_city, $destination_city)
+    function getDeliveries($departure_city, $destination_city, $date, $weight)
     {
         $sql = 'SELECT * FROM delivery as D INNER JOIN user as U ON D.user_id = U.idUser  
-                where D.departure_city = ? AND  D.destination_city = ?';
+                where D.departure_city = ? AND  D.destination_city = ? AND D.sending_date = ? AND D.weight_limit >= ?';
 
-        $results = $this->db->getAllResults($sql, [$departure_city, $destination_city]);
+        $results = $this->db->getAllResults($sql, [$departure_city, $destination_city, $date, $weight]);
         $deliveries = [];
         foreach ($results as $result) {
             $result['user'] = new User($result);
-            $deliveries = new Delivery($result);
+            $deliveries[] = new Delivery($result);
         }
         return $deliveries;
     }
-
-    
 }

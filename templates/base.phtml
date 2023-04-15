@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?= asset('css/style.css'); ?>">
+    <link rel="stylesheet" href="<?= asset('css/' . $template . '.css'); ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <title>ShipMate</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="nav_container">
+                <div class="logo">
+
+                    <a href="../controllers/home.php"><img src="<?= asset('images/logo.png'); ?>" alt=""></a>
+                </div>
+                <div class="nav_links">
+                    <div class="links">
+                        <a href="../controllers/search.php">
+                            <div class="icon search">
+                                <i class="fa-solid fa-magnifying-glass nav_icon"></i>
+                                <p>Rechercher</p>
+                            </div>
+                        </a>
+
+                        <a href="../controllers/publish.php">
+                            <div class="icon publish">
+                                <i class="fa-solid fa-box-open nav_icon"></i>
+                                <p>Publier une livraison</p>
+                            </div>
+                        </a>
+
+                    </div>
+                    <?php
+                    // Vérifier si l'utilisateur est connecté
+                    if (isset($_SESSION['user_logged_in_id'])) {
+                        /* var_dump($_SESSION['user_logged_in']); */
+                    ?>
+                        <button id="user_name">
+                            <div class="user icon">
+
+                                <div class="circle_icon user_icon">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <?= $_SESSION['user_logged_in_name'] ?>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </button>
+
+
+                    <?php } else { ?>
+
+                        <div class="user icon" id="login_icon">
+                            <a id="connexion_link" href="../controllers/connexion.php">
+                                <div class="circle_icon user_icon">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+
+                                <div class="seConnecter">Se connecter</div>
+                            </a>
+                        </div>
+
+                    <?php } ?>
+
+                </div>
+            </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <?php include $template . '.phtml'; ?>
+</body>
+
+</html>

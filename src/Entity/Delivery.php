@@ -10,13 +10,13 @@ class Delivery
     private int $idDelivery;
     private string $departure_city;
     private string $destination_city;
-    private User $user;
     private string $departure_time;
     private string $arrival_time;
     private string $sending_date;
     private string $transport_tool;
     private int  $weight_limit;
-    private string $price;
+    private float $price;
+    private User $user;
 
     // data est un tableau qui contient toutes les colonnes de la table DB "Delivery" et leur valeurs
     public function __construct(array $data = [])
@@ -31,7 +31,7 @@ class Delivery
             }
         }
     }
-    
+
 
     /**
      * Get the value of idDelivery
@@ -180,7 +180,7 @@ class Delivery
     /**
      * Get the value of price
      */
-    public function getPrice(): string
+    public function getPrice(): float
     {
         return $this->price;
     }
@@ -188,7 +188,7 @@ class Delivery
     /**
      * Set the value of price
      */
-    public function setPrice(string $price): self
+    public function setPrice(float $price): self
     {
         $this->price = $price;
 
@@ -212,4 +212,5 @@ class Delivery
 
         return $this;
     }
+
 }

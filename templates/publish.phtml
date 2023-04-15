@@ -1,4 +1,4 @@
-<?php require '../app/config.php';
+<!-- ?php require '../app/config.php';
 require '../lib/functions.php';
 ?>
 
@@ -9,8 +9,8 @@ require '../lib/functions.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?=asset('css/style.css');?>">
-    <link rel="stylesheet" href="<?=asset('css/publish_style.css');?>">
+    <link rel="stylesheet" href="?=asset('css/style.css');?>">
+    <link rel="stylesheet" href="?=asset('css/publish_style.css');?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
@@ -19,10 +19,9 @@ require '../lib/functions.php';
 </head>
 
 <body>
-    <?php
+    <php
     include './header.phtml';
-    ?>
-    <main>
+    ?> -->
         <div class="publish_container">
             <h3>Proposez une livraison </h3>
             <div class="publish_form">
@@ -33,13 +32,13 @@ require '../lib/functions.php';
                             <label for="date">
                                 <i class="fa-regular fa-calendar"></i>
                             </label>
-                            <input class="date_input" type="date" id="date" name="date" placeholder="Date d'envoi ">
+                            <input class="date_input" type="date" id="date" name="sending_date" placeholder="Date d'envoi ">
                         </div>
                         <div class="input_content transport_container">
                             <label for="transport">
                                 <i class="fa-solid fa-truck-plane"></i>
                             </label>
-                            <select name="transport" id="transport">
+                            <select name="transport_tool" id="transport">
 
                                 <option disabled selected>Moyen de transport</option>
                                 <option value="voiture">Voiture</option>
@@ -56,7 +55,7 @@ require '../lib/functions.php';
                             <label for="departure">
                                 <i class="fa-regular fa-circle-dot"></i>
                             </label>
-                            <input type="text" class="city_input" id="departure" name='departure' placeholder="Départ">
+                            <input type="text" class="city_input" id="departure" name='departure_city' placeholder="Départ">
                             <!-- div qui contient le résultat de recherche -->
                             <div class="list_container">
                                 <ul class="cities_list"></ul>
@@ -79,7 +78,7 @@ require '../lib/functions.php';
                             <label for="destination">
                                 <i class="fa-regular fa-circle-dot"></i>
                             </label>
-                            <input type="text" class="city_input" id="destination" name='destination' placeholder="Destination">
+                            <input type="text" class="city_input" id="destination" name='destination_city' placeholder="Destination">
                             <!-- div qui contient le résultat de recherche -->
                             <div class="list_container">
                                 <ul class="cities_list"></ul>
@@ -90,7 +89,7 @@ require '../lib/functions.php';
                             <label for="destination_time">
                                 <i class="fa-regular fa-clock"></i>
                             </label>
-                            <input type="text" class="time" id="destination_time" name='destination_time' placeholder="Heure d'arrivée">
+                            <input type="text" class="time" id="destination_time" name='arrival_time' placeholder="Heure d'arrivée">
 
                         </div>
 
@@ -102,7 +101,7 @@ require '../lib/functions.php';
                             <label for="weight">
                                 <i class="fa-solid fa-weight-scale"></i>
                             </label>
-                            <input type="number" id="weight" name="weight" placeholder="Poids " min="1" step="1">
+                            <input type="number" id="weight" name="weight_limit" placeholder="Poids " min="1" step="1">
                             <span>Kg</span>
                         </div>
                         <div class="input_content ">
@@ -142,6 +141,3 @@ require '../lib/functions.php';
         });
     </script>
     <script src="<?=asset('js/geonamesApiAjax.js');?>"></script>
-</body>
-
-</html>
