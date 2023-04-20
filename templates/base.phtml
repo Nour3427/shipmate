@@ -48,25 +48,26 @@
                                     <i class="fa-solid fa-user"></i>
                                 </div>
                                 <span class="logged_name"><?= ucfirst($_SESSION['user_logged_in_name']) ?></span>
-                                <i class="fa-solid fa-chevron-down"></i>
-                                <div class="menu_container">
-                                    <a  href="./">
-                                    <i class="fa-solid fa-house"></i>
-                                    <div class="menu_link">Acceuil</div>
-                                    </a>
-                                    <a href="./profile">
-                                    <i class="fa-solid fa-user"></i>
-                                    <div class="menu_link">Mon profil</div>
-                                    </a>
-                                    <a href="./logout">
-                                    <i class="fa-solid fa-right-from-bracket"></i>
-                                    <div class="menu_link">Me déconnecter</div>
-                                    </a>
-
-                            
-                                </div>
+                                <i id="chevron" class="fa-solid fa-chevron-down"></i>
                             </div>
                         </button>
+                        <div class="menu_container">
+                            <a href="./">
+                                <i class="fa-solid fa-house"></i>
+                                <div class="menu_link">Acceuil</div>
+                            </a>
+                            <a href="./profile">
+                                <i class="fa-solid fa-user"></i>
+                                <div class="menu_link">Mon profil</div>
+                            </a>
+                            <a href="./logout?action=logout">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <div class="menu_link">Me déconnecter</div>
+                            </a>
+
+
+                        </div>
+
 
 
                     <?php } else { ?>
@@ -90,6 +91,24 @@
     </header>
     <main>
         <?php include $template . '.phtml'; ?>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#user_name").click(function(e) {
+                    e.stopPropagation();
+                    $(".menu_container").slideToggle("slow");
+                    $("#chevron").toggleClass("rotate");
+                });
+
+                $(document).click(function(e) {
+                    if (!$(e.target).is("#user_name")) {
+                        $(".menu_container").slideUp("slow");
+                        $("#chevron").removeClass("rotate");
+                    }
+                });
+            });
+        </script>
 </body>
 
 </html>

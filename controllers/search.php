@@ -27,12 +27,11 @@ if (isset($_POST['send'])) {
         header("Location: connexion");
         exit();
     } else {
-        $user_weight= intval($_POST['user_weight']);
-        var_dump($user_weight);
+        $user_weight = intval($_POST['user_weight']);
         $requestModel->createRequest($user_weight, $loggedUser, $_POST['id_delivery']);
+        $_SESSION['success']='demande envoyée';
         header("Location: success");
         exit();
-       
     }
 }
 

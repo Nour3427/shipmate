@@ -34,9 +34,16 @@ switch ($path) {
     case 'search':
         require './controllers/search.php';
         break;
-    case 'success':
-        require './controllers/success.php';
+    case 'logout':
+        require './controllers/logout.php';
         break;
+    case 'success':
+        if (isset($_SESSION['success'])) {
+            require './controllers/success.php';
+            break;
+        }
+
+
     default:
         http_response_code(404);
         echo 'Erreur 404 : Page introuvable';
