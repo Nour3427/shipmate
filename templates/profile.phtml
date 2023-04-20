@@ -1,27 +1,4 @@
-<!-- php require '../app/config.php';
-require '../lib/functions.php';
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<=asset('css/style.css');?>">
-    <link rel="stylesheet" href="<=asset('css/profile_style.css')?>">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>ShipMate</title>
-</head>
-
-<body>
-    <hp
-    include './header.phtml';
-    ?>
    
-        <main> --> 
-
 <div class="profile_container">
     <h3>Bienvenue Nour,</h3>
     <div class="profile_details_container">
@@ -41,42 +18,75 @@ require '../lib/functions.php';
            le section dES INFORMATIONS PERSONNELLES
         /////////////////////////////////////////////////////////////////// -->
         <div class="informations_details">
-            <form>
+            <form action="" method="post">
                 <div class="firstname">
                     <label for="firstname">Prénom</label>
-                    <input type="text" id='firstname' name='firstname' value="Nour">
+                    <input type="text" id='firstname' name='newFirstname' value="<?= isset($_POST['newFirstname']) ? $_POST['newFirstname'] : $currentUser->getFirstname() ?>">
+
 
                 </div>
-                <div class="lastname">
+                <?php if (isset($errors['newFirstname'])) : ?>
+                    <p class="error informations_form"><?= $errors['newFirstname']; ?></p>
+                <?php endif; ?>
+                <div class="lastname ">
                     <label for="lastname">Nom</label>
-                    <input type="text" id='lastname' name='lastname' value="Ferraoun">
+                    <input type="text" id='lastname' name='newLastname' value="<?= isset($_POST['newLastname']) ? $_POST['newLastname'] : $currentUser->getLastname() ?>">
+
 
                 </div>
+                <?php if (isset($errors['newLastname'])) : ?>
+                    <p class="error informations_form"><?= $errors['newLastname']; ?></p>
+                <?php endif; ?>
                 <div class="number_phone">
                     <label for="number_phone">Numéro de téléphone</label>
-                    <input type="number" id='number_phone' name='number_phone' value="07465690">
-
+                    <input type="text" id='number_phone' name='newPhone_number' value=" <?= isset($_POST['newPhone_number']) ? $_POST['newPhone_number'] : $currentUser->getPhone_number(); ?>">
                 </div>
+                <?php if (isset($errors['newPhone_number'])) : ?>
+                    <p class="error informations_form"><?= $errors['newPhone_number']; ?></p>
+                <?php endif; ?>
                 <div class="email">
                     <label for="email">Adresse e-mail</label>
-                    <input type="email" id='email' name='email' value="ferraoun.nour@gmail.com">
-
+                    <input type="email" id='email' name='newEmail' value="<?= isset($_POST['newEmail']) ? $_POST['newEmail'] : $currentUser->getEmail(); ?>">
                 </div>
+                <?php if (isset($errors['newEmail'])) : ?>
+                    <p class="error informations_form"><?= $errors['newEmail']; ?></p>
+                <?php endif; ?>
                 <div class="password">
                     <label for="password">Mot de passe</label>
-                    <input type="password" id='password' name='password'>
-
+                    <input type="password" id='password' name='currentPassword' value="<?= isset($_POST['currentPassword']) ? $_POST['currentPassword'] : "";?>" >
                 </div>
+                <?php if (isset($errors['currentPassword'])) : ?>
+                    <p class="error informations_form"><?= $errors['currentPassword']; ?></p>
+                <?php endif; ?>
+
                 <div class="password">
                     <label for="new_password">Nouveau mot de passe</label>
-                    <input type="password" id='new_password' name='new_password'>
+                    <input type="password" id='newPassword' name='newPassword'>
+
                 </div>
+                <?php if (isset($errors['newPassword'])) : ?>
+                    <p class="error informations_form"><?= $errors['newPassword']; ?></p>
+                <?php endif; ?>
                 <button class="modify_button" type="submit" name='modify_submit'>Modifier mes informations</button>
 
 
             </form>
 
+            <?php
+            if (isset($_SESSION['message_flash'])) {
+                // Affichez le message flash
+            ?>
+                <div class="message_flash">
+                    <p><?= $_SESSION['message_flash'];
+                        unset($_SESSION['message_flash']); ?></p>
+                </div>
+            <?php
+            }
+           
+            ?>
+
         </div>
+
 
         <!-- /////////////////////////////////////////////////////////////////////
                        le section des annonces
@@ -281,3 +291,16 @@ require '../lib/functions.php';
 </div>
 </main>
 <script src="<?= asset('js/delivery.js'); ?>"></script>
+<script>
+    $(document).ready(function() {
+        $(".delivery_container").click(function() {
+            // The .index() function retrieves the index of the currently clicked element, relative to the elements with the ".delivery_container" class.
+            var index = $(".delivery_container").index(this);
+            // The .siblings() function selects all elements that share the same parent as the clicked element, but are not the clicked element itself. We then add the .find() function to select the associated ".price_sending_request" elements. Finally, we use the .slideUp() function to hide these elements.
+            $(this).siblings(".delivery_container").find(".price_sending_request").slideUp();
+            // The .find() function is used to select the ".price_sending_request" element associated with the clicked element. We then use the .slideToggle() function to show or hide this element.
+
+            $(this).find(".price_sending_request").slideToggle("slow");
+        });
+    });
+</script>

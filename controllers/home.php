@@ -1,15 +1,4 @@
 <?php
-session_start();
-// Inclusion de l'autoloader de composer
-
-
-
-require '../vendor/autoload.php';
-
-// Inclusion de la config
-require '../app/config.php';
-
-// Inclusion des dépendances
-require '../lib/functions.php';
+// unset($_SESSION['user_logged_in_id']);
 $template='home';
-include '../templates/base.phtml';
+include './templates/base.phtml';

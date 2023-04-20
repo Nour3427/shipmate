@@ -4,11 +4,15 @@ namespace App\Model;
 
 use App\Core\AbstractModel;
 use App\Entity\Delivery;
+use App\Entity\Request;
 use App\Entity\User;
+
 
 
 class DeliveryModel extends AbstractModel
 {
+    private Requestmodel $requestModel ;
+    // $requestModel = new RequestModel().
 
     // insérer les livraisons proposées par les utilisateurs 
 
@@ -36,6 +40,39 @@ class DeliveryModel extends AbstractModel
         $deliveries = [];
         foreach ($results as $result) {
             $result['user'] = new User($result);
+            $deliveries[] = new Delivery($result);
+        }
+        return $deliveries;
+    }
+
+    //récupérer toutes les livraisons proposées par la ville de départ et de destination 
+    function getDelivery($id)
+    {
+        $sql = 'SELECT * FROM delivery as D INNER JOIN user as U ON D.user_id = U.idUser  
+         where D.idDelivery = ?';
+
+        $result = $this->db->getOneResult($sql, [$id]);
+        if (!$result) {
+            return null;
+        }
+        $result['user'] = new User($result);
+        $delivery = new Delivery($result);
+        return $delivery;
+    }
+
+    function getDeliveriesWithRequests($userID)
+    {
+        $sql = 'SELECT * FROM delivery as D INNER JOIN user as U ON D.user_id = U.idUser  
+         where U.idUser = ?';
+
+        $results = $this->db->getAllResults($sql, [$userID]);
+        if (!$results) {
+            return null;
+        }
+        $deliveries = [];
+        foreach ($results as $result) {
+            $result['user'] = new User($result);
+            $result['requests'] = $this->requestModel->getRequests($result['idDelivery']);
             $deliveries[] = new Delivery($result);
         }
         return $deliveries;

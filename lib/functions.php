@@ -4,12 +4,12 @@ use App\Entity\Delivery;
 
 function asset(string $path)
 {
-    return BASE_URL . '/' . $path;
+    return BASE_URL . '/public//' . $path;
 }
 
 function constructUrl(string $path, array $params = [])
 {
-    $url = BASE_URL . '/index.php' . $path;
+    $url = './' . $path;
 
     if ($params) {
         $url .= '?' . http_build_query($params);

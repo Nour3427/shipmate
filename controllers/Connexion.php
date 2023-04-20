@@ -1,21 +1,12 @@
 <?php
-session_start();
-// Inclusion de l'autoloader de composer
 
 use App\Model\UserModel;
 
-require '../vendor/autoload.php';
-
-// Inclusion de la config
-require '../app/config.php';
-
-// Inclusion des dépendances
-require '../lib/functions.php';
 
 $UserModel = new UserModel();
-if (isset($_SESSION['user_id'])) {
+if (isset($_SESSION['user_logged_in_id'])) {
     // Si l'utilisateur est déjà connecté, rediriger vers la page d'accueil
-    header('Location: home.php');
+    header('Location: ./');
     exit;
 }
 
@@ -98,7 +89,7 @@ if (isset($_POST['login_submit'])) {
             // $user contains user object
             $_SESSION['user_logged_in_id'] = $user->getIdUser();
             $_SESSION['user_logged_in_name'] = $user->getFirstname();
-            header("Location: home.php");
+            header("Location: ./");
             exit();
         }
     }
@@ -113,4 +104,4 @@ if (isset($_POST['signup_submit'])) {
 }
 // If 'show_signup' is true, the 'login' div is hidden and the 'signup' div is displayed.
 $template='connexion';
-include '../templates/base.phtml';
+include './templates/base.phtml';

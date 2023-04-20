@@ -176,6 +176,11 @@ ul {
     width: 600px;
     margin-bottom: 20px;
 }
+.delivery_container:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 4px 1px rgba(37, 131, 238, 0.993);
+    transition: 0.3s ease-in-out;
+}
 
 .user_icon {
     width: 30px;
@@ -222,7 +227,7 @@ ul {
     height: 0;
 }
 .left_line::before{
-    content: "⭘";
+    content: "◉";
     position: absolute;
     left: 0;
     top: -1px;
@@ -234,7 +239,7 @@ ul {
     margin-right: 13px;
 }
 .right_line::before{
-    content: "⭘";
+    content: "➤";
     position: absolute;
     right: 0;
     top: -1px;
@@ -256,18 +261,67 @@ ul {
     font-size: 14px;
     color: grey;
 }
+#total_price{
+    color: #030303;
+}
+.total_price{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(98, 98, 98);
+    /* border-bottom: 1px solid rgb(174, 174, 174); */
+
+}
+.devider{
+    margin-top: 50px;
+    height: 4px;
+    border-radius: 4px;
+    background-color: rgb(174, 174, 174);
+}
+.devider.bottom{
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.sending_request{
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    /* border: 1px solid rgb(174, 174, 174); */
+}
+.total_price{
+    padding: 5px 15px;
+}
+
+#accepter {
+    color: white;
+    border: none;
+    background: #DD0F0F;
+    font-size: 16px;
+    border-radius: 8px;
+    padding: 10px 10px;
+}
+#accepter:hover {
+    cursor: pointer;
+    background: #dd0f0faf;
+    transition: 0.3s ease-in-out;
+}
+.price_sending_request{
+    display: none;
+}
 /* style pour le responsive  */
 @media (max-width: 1200px) {
     .search_form {
         width: 80%;
     }
 
-    form {
+   .search_form form {
         flex-direction: column;
         width: 100%;
     }
 
-    input {
+    .search_form input {
         width: 88%;
     }
 

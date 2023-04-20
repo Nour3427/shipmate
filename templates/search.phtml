@@ -1,37 +1,19 @@
-<!-- <php require '../app/config.php';
-require '../lib/functions.php';
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?= asset('css/style.css'); ?>">
-    <link rel="stylesheet" href="<?= asset('css/search_style.css'); ?>">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
-
-    <title>ShipMate</title>
-</head>
-
-<body>
-    <php
-    include './header.phtml'
-    ?>
-    <main> -->
 <div class="search_container">
     <h3>Trouver votre livreur </h3>
-    <div class="search_form">
+    <?php if (isset($msg_error)) : ?>
+        <p class="error"><?= $msg_error; ?></p>
+    <?php endif; ?>
+    <div class="search_form" <?php if (isset($msg_error)) {
+                                    echo 'style="border: 2px solid red"';
+                                } ?>>
         <form action="" method="POST">
             <div class="input_container city_input_container">
                 <label for="departure">
                     <i class="fa-regular fa-circle-dot"></i>
                 </label>
-                <input type="text" class='city_input' id="departure" name='departure' placeholder="Départ">
+                <input type="text" class='city_input' id="departure" name='departure' placeholder="Départ" <?php if (isset($departure)) { ?> value="<?= $departure;
+                                                                                                                                                } ?>">
+
                 <!-- div qui contient le résultat de recherche -->
                 <div class="list_container">
                     <ul class="cities_list"></ul>
@@ -42,7 +24,9 @@ require '../lib/functions.php';
                 <label for="destination">
                     <i class="fa-regular fa-circle-dot"></i>
                 </label>
-                <input type="" class='city_input' id="destination" name='destination' placeholder="Destination">
+                <input type="" class='city_input' id="destination" name='destination' placeholder="Destination" <?php if (isset($destination)) { ?> value="<?= $destination;
+                                                                                                                                                        } ?>">
+
                 <!-- div qui contient le résultat de recherche -->
                 <div class="list_container">
                     <ul class="cities_list"></ul>
@@ -53,13 +37,17 @@ require '../lib/functions.php';
                     <label for="date">
                         <i class="fa-regular fa-calendar"></i>
                     </label>
-                    <input class="date_input" type="date" id="date" name="date" placeholder="Date d'envoi ">
+                    <input class="date_input" type="date" id="date" name="date" placeholder="Date d'envoi " <?php if (isset($date)) { ?> value="<?= $date;
+                                                                                                                                            } ?>">
+
                 </div>
                 <div class="weight_input">
                     <label for="weight">
                         <i class="fa-solid fa-weight-scale"></i>
                     </label>
-                    <input type="number" id="weight" name="weight" placeholder="Poids " min="1" step="1">
+                    <input type="number" id="weight" name="weight" placeholder="Poids " min="1" step="1" <?php if (isset($weight)) { ?> value="<?= $weight;
+                                                                                                                                            } ?>">
+
                     <span>Kg</span>
                 </div>
             </div>
@@ -72,16 +60,17 @@ require '../lib/functions.php';
 
         <?php
         if (isset($_POST['search'])) {
-            if (count($results) == 0) { ?>
-                <div class="no_result">
-                    <h3> Aucun résultat trouvé</h3>
-                </div>
-            <?php } else { ?>
-                <div class="search_results">
-                    <span class="delivery_date"><?= $_POST['date'] ?></span>
-                    <?php foreach ($results as $result) { ?>
+            if (isset($results)) {
+                if (count($results) == 0) { ?>
+                    <div class="no_result">
+                        <h3> Aucun résultat trouvé</h3>
+                    </div>
+                <?php } else { ?>
+                    <div class="search_results">
+                        <span class="delivery_date"><?= $_POST['date'] ?></span>
+                        <?php foreach ($results as $result) { ?>
 
-                        <a>
+                            <!-- <a href="<= constructUrl('annonce_details', ['id' => $result->getIdDelivery()]); ?>"> -->
                             <div class="delivery_container">
                                 <div class="user_details">
                                     <div class="user_name">
@@ -124,16 +113,37 @@ require '../lib/functions.php';
                                     </div>
                                 </div>
 
+                                <div class="price_sending_request">
+                                    <div class="devider"></div>
+                                    <div class="total_price">
+                                        <p class="">Prix total pour <?= $weight; ?> Kg </p>
+                                        <?php $totale_price = $result->getPrice() * $weight; ?>
+                                        <p id="total_price"> <?= $totale_price; ?> €</p>
+                                    </div>
+                                    <div class="devider bottom"></div>
+                                    <div class="sending_request">
+                                        <form id="form" action="" method="post">
+                                            <input type="hidden" name="id_delivery" value="<?= $result->getIdDelivery() ?>">
+                                            <input type="hidden" name="user_weight" value="<?= $weight;?>">
+                                            <input type="submit" id="accepter" name="send" value="Envoyer une demande de livraison ">
+                                        </form>
+                                    </div>
+
+                                </div>
+
+
 
                             </div>
-                        </a>
 
 
 
-                    <?php   } ?>
-                </div>
+
+                        <?php   } ?>
+                    </div>
         <?php  }
-        } ?>
+            }
+        }
+        ?>
 
 
 
@@ -151,6 +161,7 @@ require '../lib/functions.php';
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
     flatpickr("#date", {
         // Initialiser Flatpickr avec la langue française
@@ -160,5 +171,17 @@ require '../lib/functions.php';
         altFormat: " j F Y",
 
     });
+
+    $(document).ready(function(){
+  $(".delivery_container").click(function(){
+     // The .index() function retrieves the index of the currently clicked element, relative to the elements with the ".delivery_container" class.
+    var index = $(".delivery_container").index(this);
+    // The .siblings() function selects all elements that share the same parent as the clicked element, but are not the clicked element itself. We then add the .find() function to select the associated ".price_sending_request" elements. Finally, we use the .slideUp() function to hide these elements.
+    $(this).siblings(".delivery_container").find(".price_sending_request").slideUp();
+     // The .find() function is used to select the ".price_sending_request" element associated with the clicked element. We then use the .slideToggle() function to show or hide this element.
+
+    $(this).find(".price_sending_request").slideToggle("slow");
+  });
+});
 </script>
 <script src="<?= asset('js/geonamesApiAjax.js'); ?>"></script>

@@ -18,19 +18,18 @@
         <nav>
             <div class="nav_container">
                 <div class="logo">
-
-                    <a href="../controllers/home.php"><img src="<?= asset('images/logo.png'); ?>" alt=""></a>
+                    <a href="./"><img src="<?= asset('images/logo.png'); ?>" alt=""></a>
                 </div>
                 <div class="nav_links">
                     <div class="links">
-                        <a href="../controllers/search.php">
+                        <a href="./search">
                             <div class="icon search">
                                 <i class="fa-solid fa-magnifying-glass nav_icon"></i>
                                 <p>Rechercher</p>
                             </div>
                         </a>
 
-                        <a href="../controllers/publish.php">
+                        <a href="./publish">
                             <div class="icon publish">
                                 <i class="fa-solid fa-box-open nav_icon"></i>
                                 <p>Publier une livraison</p>
@@ -45,12 +44,27 @@
                     ?>
                         <button id="user_name">
                             <div class="user icon">
-
                                 <div class="circle_icon user_icon">
                                     <i class="fa-solid fa-user"></i>
                                 </div>
-                                <?= $_SESSION['user_logged_in_name'] ?>
+                                <span class="logged_name"><?= ucfirst($_SESSION['user_logged_in_name']) ?></span>
                                 <i class="fa-solid fa-chevron-down"></i>
+                                <div class="menu_container">
+                                    <a  href="./">
+                                    <i class="fa-solid fa-house"></i>
+                                    <div class="menu_link">Acceuil</div>
+                                    </a>
+                                    <a href="./profile">
+                                    <i class="fa-solid fa-user"></i>
+                                    <div class="menu_link">Mon profil</div>
+                                    </a>
+                                    <a href="./logout">
+                                    <i class="fa-solid fa-right-from-bracket"></i>
+                                    <div class="menu_link">Me déconnecter</div>
+                                    </a>
+
+                            
+                                </div>
                             </div>
                         </button>
 
@@ -58,7 +72,7 @@
                     <?php } else { ?>
 
                         <div class="user icon" id="login_icon">
-                            <a id="connexion_link" href="../controllers/connexion.php">
+                            <a id="connexion_link" href="./connexion">
                                 <div class="circle_icon user_icon">
                                     <i class="fa-solid fa-user"></i>
                                 </div>

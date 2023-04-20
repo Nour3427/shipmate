@@ -1,143 +1,124 @@
-<!-- ?php require '../app/config.php';
-require '../lib/functions.php';
-?>
+<div class="publish_container">
+    <h3>Proposez une livraison </h3>
+    <?php if (isset($error_msg)) : ?>
+        <p class="error"><?= $error_msg; ?></p>
+    <?php endif; ?>
+    <div class="publish_form" <?php if (isset($error_msg)) {
+                                    echo 'style="border: 2px solid red"';
+                                } ?>>
+        <form action="" method="POST">
+            <div class="input_container">
 
-<!DOCTYPE html>
-<html lang="en">
+                <div class="input_content border_input">
+                    <label for="date">
+                        <i class="fa-regular fa-calendar"></i>
+                    </label>
+                    <input class="date_input" type="date" id="date" name="sending_date" placeholder="Date d'envoi " value="<?= isset($delivery) ? $delivery->getSending_date() : '';?>" >
+                </div>
+                <div class="input_content transport_container">
+                    <label for="transport">
+                        <i class="fa-solid fa-truck-plane"></i>
+                    </label>
+                    <select name="transport_tool" id="transport">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="?=asset('css/style.css');?>">
-    <link rel="stylesheet" href="?=asset('css/publish_style.css');?>">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+                        <option disabled selected>Moyen de transport</option>
+                        <option value="voiture">Voiture</option>
+                        <option value="avion">Avion</option>
+                        <option value="bateau">Bateau</option>
 
-    <title>ShipMate</title>
-</head>
+                    </select>
 
-<body>
-    <php
-    include './header.phtml';
-    ?> -->
-        <div class="publish_container">
-            <h3>Proposez une livraison </h3>
-            <div class="publish_form">
-                <form action="" method="POST">
-                    <div class="input_container">
+                </div>
+            </div>
+            <div class="input_container">
 
-                        <div class="input_content border_input">
-                            <label for="date">
-                                <i class="fa-regular fa-calendar"></i>
-                            </label>
-                            <input class="date_input" type="date" id="date" name="sending_date" placeholder="Date d'envoi ">
-                        </div>
-                        <div class="input_content transport_container">
-                            <label for="transport">
-                                <i class="fa-solid fa-truck-plane"></i>
-                            </label>
-                            <select name="transport_tool" id="transport">
-
-                                <option disabled selected>Moyen de transport</option>
-                                <option value="voiture">Voiture</option>
-                                <option value="avion">Avion</option>
-                                <option value="bateau">Bateau</option>
-
-                            </select>
-
-                        </div>
+                <div class="input_content border_input city_input_container">
+                    <label for="departure">
+                        <i class="fa-regular fa-circle-dot"></i>
+                    </label>
+                    <input type="text" class="city_input" id="departure" name='departure_city' placeholder="Départ" value="<?= isset($delivery) ? $delivery->getDeparture_city() : '';?>" >
+                    <!-- div qui contient le résultat de recherche -->
+                    <div class="list_container">
+                        <ul class="cities_list"></ul>
                     </div>
-                    <div class="input_container">
 
-                        <div class="input_content border_input city_input_container">
-                            <label for="departure">
-                                <i class="fa-regular fa-circle-dot"></i>
-                            </label>
-                            <input type="text" class="city_input" id="departure" name='departure_city' placeholder="Départ">
-                            <!-- div qui contient le résultat de recherche -->
-                            <div class="list_container">
-                                <ul class="cities_list"></ul>
-                            </div>
+                </div>
+                <div class="input_content">
+                    <label for="departure_time">
+                        <i class="fa-regular fa-clock"></i>
+                    </label>
+                    <input type="text" class="time" id="departure_time" name='departure_time' placeholder="Heure de départ" value="<?= isset($delivery) ? $delivery->getDeparture_time() : '';?>" >
 
-                        </div>
-                        <div class="input_content">
-                            <label for="departure_time">
-                                <i class="fa-regular fa-clock"></i>
-                            </label>
-                            <input type="text" class="time" id="departure_time" name='departure_time' placeholder="Heure de départ">
+                </div>
 
-                        </div>
-
-
-                    </div>
-                    <div class="input_container">
-
-                        <div class="input_content border_input city_input_container">
-                            <label for="destination">
-                                <i class="fa-regular fa-circle-dot"></i>
-                            </label>
-                            <input type="text" class="city_input" id="destination" name='destination_city' placeholder="Destination">
-                            <!-- div qui contient le résultat de recherche -->
-                            <div class="list_container">
-                                <ul class="cities_list"></ul>
-                            </div>
-
-                        </div>
-                        <div class="input_content">
-                            <label for="destination_time">
-                                <i class="fa-regular fa-clock"></i>
-                            </label>
-                            <input type="text" class="time" id="destination_time" name='arrival_time' placeholder="Heure d'arrivée">
-
-                        </div>
-
-
-                    </div>
-                    <div class="input_container last_input">
-
-                        <div class="input_content border_input">
-                            <label for="weight">
-                                <i class="fa-solid fa-weight-scale"></i>
-                            </label>
-                            <input type="number" id="weight" name="weight_limit" placeholder="Poids " min="1" step="1">
-                            <span>Kg</span>
-                        </div>
-                        <div class="input_content ">
-                            <label for="price">
-                                <i class="fa-solid fa-money-bill-transfer"></i>
-                            </label>
-                            <input type="number" id="price" name='price' placeholder="Prix" step="0.01">
-                            <span>€/kg</span>
-
-                        </div>
-                    </div>
-                    <button class="publish_button" type="submit" name='publish_submit'>Publier</button>
-                </form>
 
             </div>
-        </div>
+            <div class="input_container">
 
-    </main>
+                <div class="input_content border_input city_input_container">
+                    <label for="destination">
+                        <i class="fa-regular fa-circle-dot"></i>
+                    </label>
+                    <input type="text" class="city_input" id="destination" name='destination_city' placeholder="Destination" value="<?= isset($delivery) ? $delivery->getDestination_city() : '';?>" >
+                    <!-- div qui contient le résultat de recherche -->
+                    <div class="list_container">
+                        <ul class="cities_list"></ul>
+                    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
-    <script>
-        flatpickr("#date", {
-            // Initialiser Flatpickr avec la langue française
-            "locale": "fr",
-            minDate: "today",
-            altInput: true,
-            altFormat: " j F Y",
+                </div>
+                <div class="input_content">
+                    <label for="destination_time">
+                        <i class="fa-regular fa-clock"></i>
+                    </label>
+                    <input type="text" class="time" id="destination_time" name='arrival_time' placeholder="Heure d'arrivée" value="<?= isset($delivery) ? $delivery->getArrival_time() : '';?>" >
 
-        });
-        flatpickr(".time", {
-            enableTime: true,
-            noCalendar: true,
-            dateFormat: "H:i",
-            time_24hr: true
-        });
-    </script>
-    <script src="<?=asset('js/geonamesApiAjax.js');?>"></script>
+                </div>
+
+
+            </div>
+            <div class="input_container last_input">
+
+                <div class="input_content border_input">
+                    <label for="weight">
+                        <i class="fa-solid fa-weight-scale"></i>
+                    </label>
+                    <input type="number" id="weight" name="weight_limit" placeholder="Poids " min="1" step="1" value="<?= isset($delivery) ? $delivery->getSending_date() : '';?>" >
+                    <span>Kg</span>
+                </div>
+                <div class="input_content ">
+                    <label for="price">
+                        <i class="fa-solid fa-money-bill-transfer"></i>
+                    </label>
+                    <input type="number" id="price" name='price' placeholder="Prix" step="0.01">
+                    <span>€/kg</span>
+
+                </div>
+            </div>
+            <button class="publish_button" type="submit" name='publish_submit'>Publier</button>
+        </form>
+
+    </div>
+</div>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
+<script>
+    flatpickr("#date", {
+        // Initialiser Flatpickr avec la langue française
+        "locale": "fr",
+        minDate: "today",
+        altInput: true,
+        altFormat: " j F Y",
+
+    });
+    flatpickr(".time", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr: true
+    });
+</script>
+<script src="<?= asset('js/geonamesApiAjax.js'); ?>"></script>

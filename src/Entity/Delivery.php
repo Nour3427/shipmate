@@ -16,7 +16,9 @@ class Delivery
     private string $transport_tool;
     private int  $weight_limit;
     private float $price;
+    private array $requests; 
     private User $user;
+
 
     // data est un tableau qui contient toutes les colonnes de la table DB "Delivery" et leur valeurs
     public function __construct(array $data = [])
@@ -213,4 +215,22 @@ class Delivery
         return $this;
     }
 
+
+    /**
+     * Get the value of requests
+     */
+    public function getRequests(): array
+    {
+        return $this->requests;
+    }
+
+    /**
+     * Set the value of requests
+     */
+    public function setRequests(array $requests): self
+    {
+        $this->requests = $requests;
+
+        return $this;
+    }
 }

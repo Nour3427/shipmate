@@ -112,7 +112,7 @@ class User {
     /**
      * Get the value of phone_number
      */
-    public function getPhoneNumber(): string
+    public function getPhone_number(): string
     {
         return $this->phone_number;
     }
@@ -120,7 +120,7 @@ class User {
     /**
      * Set the value of phone_number
      */
-    public function setPhoneNumber(string $phone_number): self
+    public function setPhone_number(string $phone_number): self
     {
         $this->phone_number = $phone_number;
 

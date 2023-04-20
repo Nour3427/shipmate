@@ -6,6 +6,11 @@ const announcement_details=document.querySelector('.announcement_details');
 const request_details_container=document.querySelector('.request_details_container');
 const announcement_delivery=document.querySelectorAll('.announcement_delivery');
 const delivery_requests=document.querySelectorAll('.delivery_requests');
+const message_flash=document.querySelector('.message_flash');
+
+setTimeout(() => {
+  message_flash.style.display='none';
+},3000);
 
 
 

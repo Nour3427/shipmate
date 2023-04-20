@@ -7,12 +7,9 @@ use App\Entity\User;
 
 class Request{
     private int $idRequest;
-    private string $departure_city;
-    private string $destination_city;
     private Delivery $delivery;
     private User $user;
-    private string $sending_date;
-    private string  $weight;
+    private int  $weight;
     private string  $status;
 
     
@@ -25,9 +22,7 @@ class Request{
                 $this->$setter($value);
             }
         }
-    } 
-    
-    
+    }
 
     /**
      * Get the value of idRequest
@@ -43,42 +38,6 @@ class Request{
     public function setIdRequest(int $idRequest): self
     {
         $this->idRequest = $idRequest;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of departure_city
-     */
-    public function getDeparture_city(): string
-    {
-        return $this->departure_city;
-    }
-
-    /**
-     * Set the value of departure_city
-     */
-    public function setDeparture_city(string $departure_city): self
-    {
-        $this->departure_city = $departure_city;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of destination_city
-     */
-    public function getDestination_city(): string
-    {
-        return $this->destination_city;
-    }
-
-    /**
-     * Set the value of destination_city
-     */
-    public function setDestination_city(string $destination_city): self
-    {
-        $this->destination_city = $destination_city;
 
         return $this;
     }
@@ -120,27 +79,9 @@ class Request{
     }
 
     /**
-     * Get the value of sending_date
-     */
-    public function getSending_date(): string
-    {
-        return $this->sending_date;
-    }
-
-    /**
-     * Set the value of sending_date
-     */
-    public function setSending_date(string $sending_date): self
-    {
-        $this->sending_date = $sending_date;
-
-        return $this;
-    }
-
-    /**
      * Get the value of weight
      */
-    public function getWeight(): string
+    public function getWeight(): int
     {
         return $this->weight;
     }
@@ -148,12 +89,14 @@ class Request{
     /**
      * Set the value of weight
      */
-    public function setWeight(string $weight): self
+    public function setWeight(int $weight): self
     {
         $this->weight = $weight;
 
         return $this;
     }
+    
+    
 
     /**
      * Get the value of status
@@ -174,3 +117,5 @@ class Request{
     }
 }
     
+
+  
