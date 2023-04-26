@@ -1,4 +1,4 @@
-   <div class="profile_container">
+<div class="profile_container">
        <h3>Bienvenue Nour,</h3>
        <div class="profile_details_container">
            <div class="titles">
@@ -21,6 +21,8 @@
                    <div class="firstname">
                        <label for="firstname">Prénom</label>
                        <input type="text" id='firstname' name='newFirstname' value="<?= isset($_POST['newFirstname']) ? $_POST['newFirstname'] : $currentUser->getFirstname() ?>">
+
+
                    </div>
                    <?php if (isset($errors['newFirstname'])) : ?>
                        <p class="error informations_form"><?= $errors['newFirstname']; ?></p>
@@ -28,6 +30,8 @@
                    <div class="lastname ">
                        <label for="lastname">Nom</label>
                        <input type="text" id='lastname' name='newLastname' value="<?= isset($_POST['newLastname']) ? $_POST['newLastname'] : $currentUser->getLastname() ?>">
+
+
                    </div>
                    <?php if (isset($errors['newLastname'])) : ?>
                        <p class="error informations_form"><?= $errors['newLastname']; ?></p>
@@ -63,6 +67,8 @@
                        <p class="error informations_form"><?= $errors['newPassword']; ?></p>
                    <?php endif; ?>
                    <button class="modify_button" type="submit" name='modify_submit'>Modifier mes informations</button>
+
+
                </form>
 
                <?php
@@ -88,63 +94,61 @@
            <div class="announcement_details">
                <h4>Mes annonces</h4>
                <?php
-                if (count($deliveries) == 0) { ?>
+                $transport = 'bateau';
+                $results = [];
+
+                if (count($results) == 0) { ?>
                    <div class="no_result">
                        <h3>Vous n'avez aucune annonce</h3>
                    </div>
-               <?php } else { ?>
+                 <?php } else { ?>
                    <div class="search_results">
 
-                       <?php foreach ($deliveries as $delivery) { ?>
+                       <?php foreach ($results as $result) { ?>
 
                            <div class="delivery_container announcement_delivery hover_div">
                                <div class="delivery_conten">
 
                                    <div class="user_details">
                                        <div class="user_name">
-                                           <span class="delivery_date"><?= $delivery->getSending_date(); ?></span>
+                                           <span class="delivery_date">5 Mai 2023</span>
                                        </div>
                                        <div class="price_per_kg">
-                                           <span><?= $delivery->getPrice(); ?> €/Kg</span>
+                                           <span>4 €/Kg</span>
                                        </div>
                                    </div>
                                    <div class="delivery_details">
                                        <div class="depart">
-                                           <span><?= $delivery->getDeparture_city(); ?></span>
-                                           <span><?= $delivery->getDeparture_time(); ?></span>
+                                           <span>Marseille</span>
+                                           <span>13:00</span>
                                        </div>
                                        <div class="line">
                                            <div class="left_line"></div>
                                            <div class="transport">
                                                <?php
-                                                $transport_tool = $delivery->getTransport_tool();
-                                                if ($transport_tool == 'avion') { ?>
+                                                if ($transport == 'avion') { ?>
                                                    <i class="fa-solid fa-jet-fighter-up fa-rotate-90"></i>
-                                               <?php } elseif ($transport_tool == 'bateau') { ?>
+                                               <?php } elseif ($transport == 'bateau') { ?>
                                                    <i class="fa-solid fa-ferry"></i>
-                                               <?php } elseif ($transport_tool == 'voiture') { ?>
+                                               <?php } elseif ($transport == 'voiture') { ?>
                                                    <i class="fa-solid fa-car-side"></i>
                                                <?php } ?>
 
 
 
-                                               <p>Max: <?= $delivery->getWeight_limit(); ?> Kg</p>
+                                               <p>Max: 8 Kg</p>
                                            </div>
                                            <div class="right_line"></div>
                                        </div>
                                        <div class="dest">
-                                           <span><?= $delivery->getDestination_city(); ?></span>
-                                           <span><?= $delivery->getArrival_time(); ?></span>
+                                           <span>oran</span>
+                                           <span>17:20</span>
                                        </div>
                                    </div>
                                </div>
                                <div class="requests_container delivery_requests">
-                                   <?php
-                                    $delivery_requests = $RequestModel->getRequests($delivery->getIdDelivery());
-                                    //  echo '<pre>';
-                                    //  print_r($delivery_requests);
-                                    //  $requesttts=[];
-                                    if (count($delivery_requests) == 0) { ?>
+                                   <?php $requesttts = [];
+                                    if (count($requesttts) == 0) { ?>
                                        <div class="no_result">
                                            <h3>Aucune demande pour cette annonce</h3>
                                        </div>
@@ -164,24 +168,22 @@
 
                                            <?php
                                             $statuus = 'NON ACCEPTE';
-                                            foreach ($delivery_requests as $delivery_request) { ?>
+                                            foreach ($requesttts as $requestz) { ?>
                                                <div class="request_details">
 
                                                    <div class="request_user">
                                                        <div class="user_name">
-                                                           <div class="user_icon_profile">
+                                                           <div class="user_icon">
                                                                <i class="fa-solid fa-user"></i>
                                                            </div>
-                                                           <span><?= $delivery_request->getUser()->getFirstname(); ?></span>
+                                                           <span>Zack</span>
                                                        </div>
                                                    </div>
                                                    <div class="request_user">
-                                                       <span><?= $delivery_request->getWeight(); ?> Kg</span>
+                                                       <span>4 Kg</span>
                                                    </div>
                                                    <div class="request_user statuss" id="statuss">
-                                                       <?php
-                                                        $status_requests = $delivery_request->getStatus();
-                                                        if ($status_requests == 'Acceptée') { ?>
+                                                       <?php if ($statuus == 'accepté') { ?>
                                                            <i class="fa-regular fa-circle-check" style="color: #17a139;"></i>
                                                        <?php } else { ?>
 
@@ -204,95 +206,93 @@
                <?php  }
                 ?>
            </div>
-       </div>
 
+           <div class="request_details_container">
+               <h4>Mes livraisons</h4>
+               <?php
+                if (count($requests) == 0) { ?>
+                   <div class="no_result">
+                       <h3>Vous n'avez aucune livraison</h3>
+                   </div>
+               <?php } else { ?>
+                   <div class="search_results">
 
-       <div class="request_details_container">
-           <h4>Mes livraisons</h4>
-           <?php
-            if (count($requests) == 0) { ?>
-               <div class="no_result">
-                   <h3>Vous n'avez aucune livraison</h3>
-               </div>
-           <?php } else { ?>
-               <div class="search_results">
+                       <?php foreach ($requests as $request) { ?>
 
-                   <?php foreach ($requests as $request) { ?>
+                           <div class="delivery_container">
+                               <div class="delivery_conten">
 
-                       <div class="delivery_container">
-                           <div class="delivery_conten">
+                                   <div class="user_details">
+                                       <div class="user_name">
+                                           <div class="user_icon_profile">
+                                               <i class="fa-solid fa-user"></i>
+                                           </div>
+                                           <span>
+                                               <?= $request->getDelivery()->getUser()->getFirstname(); ?>
+                                           </span>
 
-                               <div class="user_details">
-                                   <div class="user_name">
-                                       <div class="user_icon_profile">
-                                           <i class="fa-solid fa-user"></i>
                                        </div>
-                                       <span>
-                                           <?= $request->getDelivery()->getUser()->getFirstname(); ?>
-                                       </span>
+                                       <div class="delivery_date">
+                                           <span class="delivery_date"><?= $request->getDelivery()->getSending_date(); ?></span>
+                                       </div>
+                                       <div class="price_per_kg">
+                                           <span><?= $request->getDelivery()->getPrice(); ?> €/Kg</span>
+                                       </div>
+                                   </div>
+                                   <div class="delivery_details">
+                                       <div class="depart">
+                                           <span><?= $request->getDelivery()->getDeparture_city(); ?></span>
+                                           <span><?= $request->getDelivery()->getDeparture_time(); ?></span>
+                                       </div>
+                                       <div class="line">
+                                           <div class="left_line"></div>
+                                           <div class="transport">
+                                               <?php
+                                                $tool = $request->getDelivery()->getTransport_tool();
+                                                if ($tool == 'avion') { ?>
+                                                   <i class="fa-solid fa-jet-fighter-up fa-rotate-90"></i>
+                                               <?php } elseif ($tool == 'bateau') { ?>
+                                                   <i class="fa-solid fa-ferry"></i>
+                                               <?php } elseif ($tool == 'voiture') { ?>
+                                                   <i class="fa-solid fa-car-side"></i>
+                                               <?php } ?>
 
-                                   </div>
-                                   <div class="delivery_date">
-                                       <span class="delivery_date"><?= $request->getDelivery()->getSending_date(); ?></span>
-                                   </div>
-                                   <div class="price_per_kg">
-                                       <span><?= $request->getDelivery()->getPrice(); ?> €/Kg</span>
+
+
+                                               <p>Poids: <?= $request->getWeight(); ?> Kg</p>
+                                           </div>
+                                           <div class="right_line"></div>
+                                       </div>
+                                       <div class="dest">
+                                           <span><?= $request->getDelivery()->getDestination_city(); ?></span>
+                                           <span><?= $request->getDelivery()->getArrival_time(); ?></span>
+                                       </div>
                                    </div>
                                </div>
-                               <div class="delivery_details">
-                                   <div class="depart">
-                                       <span><?= $request->getDelivery()->getDeparture_city(); ?></span>
-                                       <span><?= $request->getDelivery()->getDeparture_time(); ?></span>
-                                   </div>
-                                   <div class="line">
-                                       <div class="left_line"></div>
-                                       <div class="transport">
-                                           <?php
-                                            $tool = $request->getDelivery()->getTransport_tool();
-                                            if ($tool == 'avion') { ?>
-                                               <i class="fa-solid fa-jet-fighter-up fa-rotate-90"></i>
-                                           <?php } elseif ($tool == 'bateau') { ?>
-                                               <i class="fa-solid fa-ferry"></i>
-                                           <?php } elseif ($tool == 'voiture') { ?>
-                                               <i class="fa-solid fa-car-side"></i>
-                                           <?php } ?>
+                               <div class="requests_container st">
+                                   <?php
+                                    $status = $request->getStatus();
+                                    if ($status == 'Acceptée') { ?>
+                                       <i class="fa-solid fa-circle" style="color: #3dbf0d;"></i>
+                                       <span class="font-cirle">Acceptée</span>
+                                   <?php } else { ?>
+                                       <i class="fa-solid fa-circle" style="color: #f4ac48;"></i>
+                                       <span class="font-cirle">En attente</span>
 
 
-
-                                           <p>Poids: <?= $request->getWeight(); ?> Kg</p>
-                                       </div>
-                                       <div class="right_line"></div>
-                                   </div>
-                                   <div class="dest">
-                                       <span><?= $request->getDelivery()->getDestination_city(); ?></span>
-                                       <span><?= $request->getDelivery()->getArrival_time(); ?></span>
-                                   </div>
+                                   <?php } ?>
                                </div>
                            </div>
-                           <div class="requests_container st">
-                               <?php
-                                $status = $request->getStatus();
-                                if ($status == 'Acceptée') { ?>
-                                   <i class="fa-solid fa-circle" style="color: #3dbf0d;"></i>
-                                   <span class="font-cirle">Acceptée</span>
-                               <?php } else { ?>
-                                   <i class="fa-solid fa-circle" style="color: #f4ac48;"></i>
-                                   <span class="font-cirle">En attente</span>
+                       <?php   } ?>
+                   </div>
+               <?php  }
+                ?>
 
 
-                               <?php } ?>
-                           </div>
-                       </div>
-                   <?php   } ?>
-               </div>
-           <?php  }
-            ?>
+           </div>
        </div>
    </div>
-
-
-
-   </div>
+   <?php var_dump($results); ?>
    </main>
    <script src="<?= asset('js/delivery.js'); ?>"></script>
    <!-- <script>

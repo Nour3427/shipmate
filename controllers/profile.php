@@ -90,6 +90,31 @@ if (isset($_POST['modify_submit'])) {
         }
     }
 }
+$requests = $RequestModel->getRequestByUserID($idUser);
+// echo '<pre>';
+// print_r($requests);
+$deliveries=$DeliveryModel->getDeliveriesWithRequests($idUser);
+// $delivery_requests=$RequestModel->getRequests($delivery->getIdDelivery());
+
+// var_dump($deliveries);
+
+
+    
+    
+    // echo '<pre>';
+    // print_r($deliveries);
+
+
+
+
+
+
+// foreach ($requests as $request) {
+//     echo '<pre>';
+//     print_r($request);
+//     //    $n= $request->getDelivery()->getUser()->getFirstname();
+//     // var_dump($n);
+// }
 
 
 

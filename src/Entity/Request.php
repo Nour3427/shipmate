@@ -71,7 +71,7 @@ class Request{
     /**
      * Set the value of user
      */
-    public function setUser(User $user): self
+    public function setuser(User $user): self
     {
         $this->user = $user;
 

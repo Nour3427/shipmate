@@ -70,4 +70,10 @@ class UserModel extends AbstractModel
             return null;
         }
     }
+    function getAllUsers(){
+        $sql = 'SELECT * FROM user';
+        $results = $this->db->getAllResults($sql);
+        return $results;
+
+    }
 }

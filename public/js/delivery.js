@@ -16,7 +16,7 @@ setTimeout(() => {
 
 
 
-for(let i=0; i<announcement_delivery.length;i++){
+// for(let i=0; i<announcement_delivery.length;i++){
 informations.addEventListener('click',function(){
     this.style.borderBottom='2px solid black';
     announcement.style.borderBottom='none';
@@ -24,7 +24,7 @@ informations.addEventListener('click',function(){
     informations_details.style.display='block';
     announcement_details.style.display='none';
     request_details_container.style.display='none';
-    delivery_requests[i].style.display='none';
+    // delivery_requests[i].style.display='none';
 })
 announcement.addEventListener('click',function(){
     this.style.borderBottom='2px solid black';
@@ -41,47 +41,47 @@ request.addEventListener('click',function(){
     informations_details.style.display='none';
     announcement_details.style.display='none';
     request_details_container.style.display='block';
-    delivery_requests[i].style.display='none';
+    // delivery_requests[i].style.display='none';
 })
 
 
-    announcement_delivery[i].addEventListener('click',function(){
-        delivery_requests[i].style.display='block';
-        this.classList.remove('hover_div');
-    })
-}
+    // announcement_delivery[i].addEventListener('click',function(){
+    //     delivery_requests[i].style.display='block';
+    //     this.classList.remove('hover_div');
+    // })
+// }
 
 
 
-const statuss = document.querySelector('.statuss');
+// const statuss = document.querySelector('.statuss');
 
-const form = document.getElementById('form');
-const response = document.getElementById('response');
+// const form = document.getElementById('form');
+// const response = document.getElementById('response');
 
-// Ajouter un gestionnaire d'événement sur la soumission du formulaire
-form.addEventListener('submit', function(event) {
-  // Empêcher le rechargement de la page par défaut
-  event.preventDefault();
+// // Ajouter un gestionnaire d'événement sur la soumission du formulaire
+// form.addEventListener('submit', function(event) {
+//   // Empêcher le rechargement de la page par défaut
+//   event.preventDefault();
 
-  // Récupérer les données du formulaire
-  const formData = new FormData(form);
+//   // Récupérer les données du formulaire
+//   const formData = new FormData(form);
 
-  // Envoyer les données du formulaire via AJAX
-  fetch('', {
-    method: 'POST',
-    body: formData
-  })
-  .then(data => {
-    // Afficher la réponse du serveur
-    response.innerHTML = data;
+//   // Envoyer les données du formulaire via AJAX
+//   fetch('', {
+//     method: 'POST',
+//     body: formData
+//   })
+//   .then(data => {
+//     // Afficher la réponse du serveur
+//     response.innerHTML = data;
     
-    console.log('nour');
-    statuss.innerHTML = '<i class="fa-regular fa-circle-check" style="color: #17a139;"></i>';
-  })
-  .catch(error => {
-    console.error(error);
+//     console.log('nour');
+//     statuss.innerHTML = '<i class="fa-regular fa-circle-check" style="color: #17a139;"></i>';
+//   })
+//   .catch(error => {
+//     console.error(error);
     
-  });
-});
+//   });
+// });
 
 

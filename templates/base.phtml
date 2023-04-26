@@ -44,7 +44,7 @@
                     ?>
                         <button id="user_name">
                             <div class="user icon">
-                                <div class="circle_icon user_icon">
+                                <div class="circle_icon user_connected">
                                     <i class="fa-solid fa-user"></i>
                                 </div>
                                 <span class="logged_name"><?= ucfirst($_SESSION['user_logged_in_name']) ?></span>
@@ -60,6 +60,15 @@
                                 <i class="fa-solid fa-user"></i>
                                 <div class="menu_link">Mon profil</div>
                             </a>
+                            
+                           <?php 
+                           if (isset($_SESSION['user_role'])&& $_SESSION['user_role']=="admin") {?>
+                            <a href="./logout?action=logout">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                                <div class="menu_link">Administration</div>
+                            </a>
+                           <?php }?>
+
                             <a href="./logout?action=logout">
                                 <i class="fa-solid fa-right-from-bracket"></i>
                                 <div class="menu_link">Me déconnecter</div>

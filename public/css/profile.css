@@ -98,7 +98,7 @@ form div {
 .announcement_details,
 .request_details_container {
     padding: 50px;
-    display: none;
+    display:none;
 }
 
 h4 {
@@ -225,7 +225,7 @@ h4 {
 }
 
 .transport {
-    width: 70px;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -238,9 +238,12 @@ h4 {
 }
 
 .transport p {
+    position: absolute;
     margin: 0;
     font-size: 14px;
-    color: grey;
+    color: rgb(122, 122, 122);
+    top: 27px;
+    width: max-content;
 }
 
 .hover_div:hover {
@@ -264,7 +267,7 @@ h4 {
 }
 
 .delivery_requests {
-    display: none;
+    display: block;
 }
 
 .titles_list,

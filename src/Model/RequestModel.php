@@ -10,21 +10,38 @@ use App\Entity\User;
 class RequestModel extends AbstractModel
 {
 
+    // function getRequestByUserID($idUser)
+    // {
+    //     $sql = 'SELECT * FROM delivery_request as DR INNER JOIN user as U ON DR.user_id = U.idUser 
+    //     INNER JOIN delivery as D ON DR.delivery_id = D.idDelivery where DR.user_id=?';
+
+    //     $results = $this->db->getAllResults($sql, [$idUser]);
+    
+    //     $requests = [];
+    //     foreach ($results as $result) {
+    //         $resultRequest['user'] = new User($result);
+    //         $result['delivery'] = new Delivery($result);
+    //         $requests[] = new Request($result);
+    //     }
+    //     return $requests;
+    // }
     function getRequestByUserID($idUser)
     {
         $sql = 'SELECT * FROM delivery_request as DR INNER JOIN user as U ON DR.user_id = U.idUser 
         INNER JOIN delivery as D ON DR.delivery_id = D.idDelivery where DR.user_id=?';
 
         $results = $this->db->getAllResults($sql, [$idUser]);
+       
+
+        $userModel = new UserModel();
         $requests = [];
         foreach ($results as $result) {
-            $resultRequest['user'] = new User($result);
+            $result['user'] =  $userModel->getUserById($result['user_id']);
             $result['delivery'] = new Delivery($result);
             $requests[] = new Request($result);
         }
         return $requests;
     }
-
 
     function getRequests($idDelivery)
     {
@@ -32,7 +49,7 @@ class RequestModel extends AbstractModel
         $results = $this->db->getAllResults($sql, [$idDelivery]);
         $requests = [];
         foreach ($results as $result) {
-            $resultRequest['user'] = new User($result);
+            $result['user'] = new User($result);
             $requests[] = new Request($result);
         }
         return $requests;

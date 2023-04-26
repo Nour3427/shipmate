@@ -105,6 +105,13 @@ nav {
     color: rgb(85, 85, 85);
     margin-right: 20px;
 }
+.user_connected{
+    width: 40px;
+    height: 40px;
+    font-size: 23px;
+    margin-right: 10px;   
+    color: white;
+}
 
 .user_icon {
     width: 40px;
@@ -525,6 +532,9 @@ nav {
         height: 30px;
         font-size: 20px;
         margin-right: 10px;
+    }
+    .circle_icon.user_icon.user_connected{
+        color: white;
     }
 
     .user {

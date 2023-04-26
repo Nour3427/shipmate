@@ -11,9 +11,12 @@ use App\Entity\User;
 
 class DeliveryModel extends AbstractModel
 {
-    private Requestmodel $requestModel ;
+    // private Requestmodel $requestModel ;
     // $requestModel = new RequestModel().
-
+    // public function __construct()
+    // {
+    //     $this->requestModel = new RequestModel();
+    // }
     // insérer les livraisons proposées par les utilisateurs 
 
     function addDelivery(Delivery $delivery)
@@ -52,9 +55,9 @@ class DeliveryModel extends AbstractModel
          where D.idDelivery = ?';
 
         $result = $this->db->getOneResult($sql, [$id]);
-        if (!$result) {
-            return null;
-        }
+        // if (!$result) {
+        //     return null;
+        // }
         $result['user'] = new User($result);
         $delivery = new Delivery($result);
         return $delivery;
@@ -66,15 +69,32 @@ class DeliveryModel extends AbstractModel
          where U.idUser = ?';
 
         $results = $this->db->getAllResults($sql, [$userID]);
-        if (!$results) {
-            return null;
-        }
+        // echo '<pre>';
+        // print_r($results);
+        // exit();
+       
+        
+        // if (!$results) {
+        //     return null;
+        // }
         $deliveries = [];
+        // $RequestModel = new RequestModel();
         foreach ($results as $result) {
-            $result['user'] = new User($result);
-            $result['requests'] = $this->requestModel->getRequests($result['idDelivery']);
+            // $result['user'] = new User($result);
+            // $result['requests'] = $RequestModel->getRequests($result['idDelivery']); 
+            //   echo '<pre>';
+            // print_r($result);
+            // exit();
+        
             $deliveries[] = new Delivery($result);
         }
         return $deliveries;
+    }
+
+    function getAllDeliveries(){
+        $sql = 'SELECT * FROM delivery as D INNER JOIN user as U ON D.user_id = U.idUser ';
+        $results = $this->db->getAllResults($sql); 
+        return $results;
+
     }
 }
