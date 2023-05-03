@@ -8,6 +8,7 @@ use App\Entity\User;
 class Request{
     private int $idRequest;
     private Delivery $delivery;
+    private int $delivery_id;
     private User $user;
     private int  $weight;
     private string  $status;
@@ -112,6 +113,24 @@ class Request{
     public function setStatus(string $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of delivery_id
+     */
+    public function getDelivery_id(): int
+    {
+        return $this->delivery_id;
+    }
+
+    /**
+     * Set the value of delivery_id
+     */
+    public function setDelivery_id(int $delivery_id): self
+    {
+        $this->delivery_id = $delivery_id;
 
         return $this;
     }

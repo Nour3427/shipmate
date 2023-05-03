@@ -75,4 +75,16 @@ class RequestModel extends AbstractModel
 //     $sql = 'UPDATE delivery_request SET status = ? WHERE idRequest = ?';
 //     $this->db->prepareAndExecute($sql, [$status, $request_id]);
 // }
+
+function getAllRequests(){
+    $sql = 'SELECT * FROM delivery_request as D INNER JOIN user as U ON D.user_id = U.idUser';
+        $results = $this->db->getAllResults($sql);
+        $requests = [];
+        foreach ($results as $result) {
+            $result['user'] = new User($result);
+            $result['delivery'] = new Delivery($result);
+            $requests[] = new Request($result);
+        }
+        return $requests;
+}
 }

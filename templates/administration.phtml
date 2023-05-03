@@ -1,0 +1,214 @@
+<div class="administration_container">
+    <div class="administration_list">
+        <div id="users" class="users clickStyle">
+            <i class="fa-solid fa-users"></i>
+            <p>Utilisateurs</p>
+        </div>
+        <div class="announcements" id="announcements">
+            <i class="fa-solid fa-box-open"></i>
+            <p>Annonces de livraison</p>
+        </div>
+        <div class="requests" id="requests">
+            <i class="fa-solid fa-hand"></i>
+            <p>Demandes de livraison</p>
+        </div>
+    </div>
+    <div class="datas">
+        <!-- ////////////////////////////////////////////////
+         1ère div  
+        ////////////////////////////////////// -->
+
+        <div class="users_details" id="users_details">
+            <h4>Gestion des utilisateurs</h4>
+            <div class="thead">
+                <div class="name">Nom</div>
+                <div class="role">Role</div>
+                <div class="email">E-mail</div>
+                <div class="phone">Téléphone</div>
+                <div class="action">Action</div>
+
+            </div>
+
+            <?php
+            foreach ($users as $user) { ?>
+                <div class="user_infos">
+                    <div class="name">
+                        <div class="circle_icon user_connected">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <?= ucfirst($user->getFirstname()) . ' ' . ucfirst($user->getLastname()); ?>
+                    </div>
+                    <div class="role"> <span class=" <?php if ($user->getRole() == "admin") {
+                                                            echo "adminDiv";
+                                                        } else {
+                                                            echo "noAdminDiv";
+                                                        } ?>"><?= $user->getRole(); ?></span></div>
+                    <div class="email"><?= $user->getEmail(); ?></div>
+                    <div class="phone"><?= $user->getPhone_number(); ?></div>
+                    <div class="action">
+                        <button type="submit" name="user_delete"><i class="fa-solid fa-trash-can" title="Supprimer"></i></button>
+                        
+                    </div>
+                </div>
+                    <!-- <div class="action">
+                        <form action="" method="post" onsubmit="return confirmDelete()">
+                        <input type="hidden" name="id_user" value="<?= $user->getIdUser(); ?>">
+                        <button type="submit" name="user_delete"><i class="fa-solid fa-trash-can" title="Supprimer"></i></button>
+                        </form>
+                    </div>
+                </div> -->
+
+                <div class="popup">
+                    <p>Voulez-vous vraiment supprimer cet utilisateur?</p>
+                    <form action="" method="post"></form>
+                    <input type="hidden" name="id_user" value="<?= $user->getIdUser(); ?>">
+                    <div class="buttons">
+                        <button type="submit" class='cancel_delete' name="cancel_delete">Annuler</button>
+                        <button type="submit" class='user_delete' name="user_delete">Supprimer</button>
+                    </div>
+                    </form>
+                </div>
+
+            <?php } ?>
+
+        </div>
+        <!-- ////////////////////////////////////////////////
+         2eme div  
+        ////////////////////////////////////// -->
+        <div class="delivery_announcements_details" id="delivery_announcements_details">
+            <h4>Gestion des annonces de livraison</h4>
+            <div class="thead theadDiv">
+                <div class="deliveryId">Id</div>
+                <div class="details_a_delivery">Details de la livraison</div>
+                <div class="action">action</div>
+
+
+            </div>
+            <?php
+            foreach ($deliveries as $delivery) { ?>
+                <div class="managing">
+                    <div class="deliveryId id_content"><?= $delivery->getIdDelivery(); ?></div>
+                    <div class="details_a_delivery">
+                        <div class="delivery_container">
+                            <div class="user_details">
+                                <div class="user_name">
+                                    <div class="user_icon_search">
+                                        <i class="fa-solid fa-user"></i>
+                                    </div>
+                                    <span><?= ucfirst($delivery->getUser()->getFirstname()); ?> </span>
+                                </div>
+                                <div><span class="delivery_date"><?= $delivery->getSending_date(); ?></span></div>
+                                <div class="price_per_kg">
+                                    <span><?= $delivery->getPrice(); ?>€/Kg</span>
+                                </div>
+                            </div>
+                            <div class="delivery_details">
+                                <div class="depart">
+                                    <span><?= $delivery->getDeparture_city(); ?></span>
+                                    <span><?= $delivery->getDeparture_time(); ?></span>
+                                </div>
+                                <div class="line">
+                                    <div class="left_line"></div>
+                                    <div class="transport">
+                                        <?php
+                                        $transport = $delivery->getTransport_tool();
+                                        if ($transport == 'avion') { ?>
+                                            <i class="fa-solid fa-jet-fighter-up fa-rotate-90"></i>
+                                        <?php } elseif ($transport == 'bateau') { ?>
+                                            <i class="fa-solid fa-ferry"></i>
+                                        <?php } elseif ($transport == 'voiture') { ?>
+                                            <i class="fa-solid fa-car-side"></i>
+                                        <?php } ?>
+
+
+
+                                        <p>Max:<?= $delivery->getWeight_limit(); ?>Kg</p>
+                                    </div>
+                                    <div class="right_line"></div>
+                                </div>
+                                <div class="dest">
+                                    <span><?= $delivery->getDestination_city(); ?></span>
+                                    <span><?= $delivery->getArrival_time(); ?></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form action="" method="post">
+                        <div class="action delete">
+                            <input type="hidden" name="id_delivery" value="<?= $delivery->getIdDelivery(); ?>">
+                            <button type="submit" name="delivery_delete"><i class="fa-solid fa-trash-can" title="Supprimer"></i></button>
+
+                        </div>
+                    </form>
+                </div><?php } ?>
+
+
+            <!-- <div class="delete">
+            <i class="fa-solid fa-trash-can" title="Supprimer">
+            </div> -->
+
+        </div>
+
+        <!-- ////////////////////////////////////////////////
+         3eme div  
+        ////////////////////////////////////// -->
+
+        <div class="requests_details" id="requests_details">
+            <h4>Gestion des demandes de livraions</h4>
+            <div class="thead">
+                <div class="name">Nom de demandeur</div>
+                <div class="request_status">Status</div>
+                <div class="IdDelivery">Id de la livraison</div>
+                <div class="requested_weight">Poids</div>
+                <div class="action">Action</div>
+
+            </div>
+
+            <?php
+            foreach ($requests as $request) { ?>
+                <div class="user_infos">
+                    <div class="name">
+                        <div class="circle_icon user_connected">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <?= ucfirst($request->getUser()->getFirstname()) . ' ' . ucfirst($request->getUser()->getLastname()) ?>
+                    </div>
+                    <div class="request_status">
+                        <?php
+                        $request_status = $request->getStatus();
+                        if ($request_status == 'Acceptée') { ?>
+                            <i class="fa-solid fa-circle" style="color: #3dbf0d;"></i>
+                            <span class="font-cirle">Acceptée</span>
+                        <?php } else { ?>
+                            <i class="fa-solid fa-circle" style="color: #f4ac48;"></i>
+                            <span class="font-cirle">En attente</span>
+
+
+                        <?php } ?>
+                    </div>
+                    <div class="IdDelivery"><?= $request->getDelivery_Id() ?></div>
+                    <div class="requested_weight"><?= $request->getWeight() ?> Kg</div>
+                    <form action="" method="post">
+                        <div class="action delete">
+                            <input type="hidden" name="id_delivery" value="<?= $delivery->getIdDelivery(); ?>">
+                            <button type="submit" name="delivery_delete"><i class="fa-solid fa-trash-can" title="Supprimer"></i></button>
+
+                        </div>
+                    </form>
+
+
+
+                </div>
+            <?php } ?>
+
+        </div>
+
+
+
+
+
+
+    </div>
+    </main>
+
+    <script src="<?= asset('js/administration.js'); ?>"></script>

@@ -45,12 +45,7 @@ request.addEventListener('click',function(){
 })
 
 
-    // announcement_delivery[i].addEventListener('click',function(){
-    //     delivery_requests[i].style.display='block';
-    //     this.classList.remove('hover_div');
-    // })
-// }
-
+   
 
 
 // const statuss = document.querySelector('.statuss');
@@ -83,5 +78,9 @@ request.addEventListener('click',function(){
     
 //   });
 // });
+
+
+
+
 
 

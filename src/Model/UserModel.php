@@ -73,7 +73,12 @@ class UserModel extends AbstractModel
     function getAllUsers(){
         $sql = 'SELECT * FROM user';
         $results = $this->db->getAllResults($sql);
-        return $results;
+        $users=[];
+        foreach ($results as $result) {
+           
+            $users[] = new user($result);
+        }
+        return $users;
 
     }
 }

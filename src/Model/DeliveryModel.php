@@ -94,7 +94,12 @@ class DeliveryModel extends AbstractModel
     function getAllDeliveries(){
         $sql = 'SELECT * FROM delivery as D INNER JOIN user as U ON D.user_id = U.idUser ';
         $results = $this->db->getAllResults($sql); 
-        return $results;
+        $deliveries = [];
+        foreach ($results as $result) {
+            $result['user'] = new User($result);
+            $deliveries[] = new Delivery($result);
+        }
+        return $deliveries;
 
     }
 }

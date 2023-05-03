@@ -42,6 +42,11 @@ switch ($path) {
             require './controllers/success.php';
             break;
         }
+    case 'administration':
+        if (isset($_SESSION['user_role']) && $_SESSION['user_role']=='admin' ) {
+            require './controllers/administration.php';
+            break;
+        }
 
 
     default:
