@@ -1,3 +1,4 @@
+<div class="background"></div>
 <div class="administration_container">
     <div class="administration_list">
         <div id="users" class="users clickStyle">
@@ -14,6 +15,7 @@
         </div>
     </div>
     <div class="datas">
+
         <!-- ////////////////////////////////////////////////
          1ère div  
         ////////////////////////////////////// -->
@@ -31,6 +33,7 @@
 
             <?php
             foreach ($users as $user) { ?>
+
                 <div class="user_infos">
                     <div class="name">
                         <div class="circle_icon user_connected">
@@ -45,32 +48,28 @@
                                                         } ?>"><?= $user->getRole(); ?></span></div>
                     <div class="email"><?= $user->getEmail(); ?></div>
                     <div class="phone"><?= $user->getPhone_number(); ?></div>
-                    <div class="action">
-                        <button type="submit" name="user_delete"><i class="fa-solid fa-trash-can" title="Supprimer"></i></button>
-                        
-                    </div>
-                </div>
-                    <!-- <div class="action">
-                        <form action="" method="post" onsubmit="return confirmDelete()">
-                        <input type="hidden" name="id_user" value="<?= $user->getIdUser(); ?>">
-                        <button type="submit" name="user_delete"><i class="fa-solid fa-trash-can" title="Supprimer"></i></button>
-                        </form>
-                    </div>
-                </div> -->
 
-                <div class="popup">
-                    <p>Voulez-vous vraiment supprimer cet utilisateur?</p>
-                    <form action="" method="post"></form>
-                    <input type="hidden" name="id_user" value="<?= $user->getIdUser(); ?>">
-                    <div class="buttons">
-                        <button type="submit" class='cancel_delete' name="cancel_delete">Annuler</button>
-                        <button type="submit" class='user_delete' name="user_delete">Supprimer</button>
+                    <div class="action">
+
+                        <button type="button" class="delete" name="delete" data_idUser="<?= $user->getIdUser(); ?>">
+                            <i class="fa-solid fa-trash-can" title="Supprimer"></i>
+                        </button>
+
                     </div>
-                    </form>
                 </div>
+
 
             <?php } ?>
-
+            <div class="delete_user_popup" id="popup">
+                <p>Voulez-vous vraiment supprimer cet utilisateur?</p>
+                <form action="" method="post">
+                    <input type="hidden" name="id_user" id="id_user" value=''>
+                    <div class="buttons">
+                        <button type="submit" class='cancel_delete' name="cancel_delete">Annuler</button>
+                        <button type="submit" class='button_delete' name="user_delete">Supprimer</button>
+                    </div>
+                </form>
+            </div>
         </div>
         <!-- ////////////////////////////////////////////////
          2eme div  
@@ -133,19 +132,23 @@
                             </div>
                         </div>
                     </div>
-                    <form action="" method="post">
-                        <div class="action delete">
-                            <input type="hidden" name="id_delivery" value="<?= $delivery->getIdDelivery(); ?>">
-                            <button type="submit" name="delivery_delete"><i class="fa-solid fa-trash-can" title="Supprimer"></i></button>
+                    <div class="action delete_button_container">
 
-                        </div>
-                    </form>
+                        <button type="button" class="delivery_delete" name="delivery_delete" data_idDelivery="<?= $delivery->getIdDelivery(); ?>">
+                            <i class="fa-solid fa-trash-can" title="Supprimer"></i></button>
+                    </div>
+
                 </div><?php } ?>
-
-
-            <!-- <div class="delete">
-            <i class="fa-solid fa-trash-can" title="Supprimer">
-            </div> -->
+            <div class="delete_delivery_popup" id="popup">
+                <p>Voulez-vous vraiment supprimer cette annonce de livraison?</p>
+                <form action="" method="post">
+                    <input type="hidden" name="id_delivery" id="id_delivery" value=''>
+                    <div class="buttons">
+                        <button type="submit" class='delivery_cancel_delete' name="delivery_cancel_delete">Annuler</button>
+                        <button type="submit" class='button_delete' name="delivery_delete">Supprimer</button>
+                    </div>
+                </form>
+            </div>
 
         </div>
 
@@ -188,18 +191,22 @@
                     </div>
                     <div class="IdDelivery"><?= $request->getDelivery_Id() ?></div>
                     <div class="requested_weight"><?= $request->getWeight() ?> Kg</div>
-                    <form action="" method="post">
-                        <div class="action delete">
-                            <input type="hidden" name="id_delivery" value="<?= $delivery->getIdDelivery(); ?>">
-                            <button type="submit" name="delivery_delete"><i class="fa-solid fa-trash-can" title="Supprimer"></i></button>
-
-                        </div>
-                    </form>
-
-
-
+                    <div class="action delete_button">
+                        <button type="submit" class="request_delete" name="request_delete" data_idRequest="<?= $request->getIdRequest(); ?>">
+                            <i class="fa-solid fa-trash-can" title="Supprimer"></i></button>
+                    </div>
                 </div>
             <?php } ?>
+            <div class="delete_request_popup" id="popup">
+                <p>Voulez-vous vraiment supprimer cette demande de livraiosn?</p>
+                <form action="" method="post">
+                    <input type="hidden" name="id_request" id="id_request" value=''>
+                    <div class="buttons">
+                        <button type="submit" class='request_cancel_delete' name="request_cancel_delete">Annuler</button>
+                        <button type="submit" class='button_delete' name="request_delete">Supprimer</button>
+                    </div>
+                </form>
+            </div>
 
         </div>
 
@@ -209,6 +216,8 @@
 
 
     </div>
+
     </main>
+
 
     <script src="<?= asset('js/administration.js'); ?>"></script>

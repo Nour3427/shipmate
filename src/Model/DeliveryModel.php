@@ -72,8 +72,8 @@ class DeliveryModel extends AbstractModel
         // echo '<pre>';
         // print_r($results);
         // exit();
-       
-        
+
+
         // if (!$results) {
         //     return null;
         // }
@@ -85,21 +85,26 @@ class DeliveryModel extends AbstractModel
             //   echo '<pre>';
             // print_r($result);
             // exit();
-        
+
             $deliveries[] = new Delivery($result);
         }
         return $deliveries;
     }
 
-    function getAllDeliveries(){
+    function getAllDeliveries()
+    {
         $sql = 'SELECT * FROM delivery as D INNER JOIN user as U ON D.user_id = U.idUser ';
-        $results = $this->db->getAllResults($sql); 
+        $results = $this->db->getAllResults($sql);
         $deliveries = [];
         foreach ($results as $result) {
             $result['user'] = new User($result);
             $deliveries[] = new Delivery($result);
         }
         return $deliveries;
-
+    }
+    function deleteDelivey($idDelivery)
+    {
+        $sql = ' DELETE FROM delivery WHERE idDelivery=? ';
+        $this->db->prepareAndExecute($sql, [$idDelivery]);
     }
 }

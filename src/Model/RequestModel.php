@@ -82,9 +82,16 @@ function getAllRequests(){
         $requests = [];
         foreach ($results as $result) {
             $result['user'] = new User($result);
-            $result['delivery'] = new Delivery($result);
             $requests[] = new Request($result);
+            $result['delivery'] = new Delivery($result);
+            
         }
         return $requests;
 }
+function deleteRequest($idRequest){
+    $sql = ' DELETE FROM delivery_request WHERE idRequest=? ';
+    $this->db->prepareAndExecute($sql, [$idRequest]);
+
+}
+
 }

@@ -1,4 +1,4 @@
-<?php
+<
 
 use App\Model\DeliveryModel;
 use App\Model\RequestModel;

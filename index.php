@@ -25,9 +25,9 @@ switch ($path) {
     case 'profile':
         require './controllers/profile.php';
         break;
-    case 'annonce_details':
-        require './controllers/annonce_details.php';
-        break;
+    // case 'annonce_details':
+    //     require './controllers/annonce_details.php';
+    //     break;
     case 'publish':
         require './controllers/publish.php';
         break;

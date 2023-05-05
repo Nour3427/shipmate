@@ -75,10 +75,14 @@ class UserModel extends AbstractModel
         $results = $this->db->getAllResults($sql);
         $users=[];
         foreach ($results as $result) {
-           
             $users[] = new user($result);
         }
         return $users;
+
+    }
+    function deleteUser($idUser){
+        $sql = ' DELETE FROM user WHERE idUser=? ';
+        $this->db->prepareAndExecute($sql, [$idUser]);
 
     }
 }
