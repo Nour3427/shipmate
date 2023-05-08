@@ -21,8 +21,8 @@ input {
 a {
     text-decoration: none;
     /* color: #3273A3; */
-     color: inherit;
-    }
+    color: inherit;
+}
 
 nav {
     width: 100%;
@@ -105,11 +105,12 @@ nav {
     color: rgb(85, 85, 85);
     margin-right: 20px;
 }
-.user_connected{
+
+.user_connected {
     width: 40px;
     height: 40px;
     font-size: 23px;
-    margin-right: 10px;   
+    margin-right: 10px;
     color: white;
 }
 
@@ -118,7 +119,7 @@ nav {
     height: 40px;
     font-size: 23px;
     margin-right: 10px;
-    
+
 }
 
 #user_name {
@@ -137,13 +138,15 @@ nav {
     font-size: 15px;
     padding-right: 10px;
 }
-.logged_name{
+
+.logged_name {
     font-weight: 700;
     font-size: 17px;
     margin-left: 10px;
     margin-right: 15px;
 }
-.menu_container{
+
+.menu_container {
     position: absolute;
     width: 184px;
     background: #F2F2F2;
@@ -156,23 +159,28 @@ nav {
     z-index: 1;
     display: none;
 }
+
 .rotate {
     transform: rotate(180deg);
     transition: 0.3s linear;
 }
-.menu_container a{
+
+.menu_container a {
     display: flex;
     padding: 15px;
     font-size: 15px;
     align-items: center;
 }
-.menu_container i{
-    color:#3273A3 ;
+
+.menu_container i {
+    color: #3273A3;
 }
-.menu_container a:hover{
+
+.menu_container a:hover {
     background-color: #e1e1e1;
 }
-.menu_link{
+
+.menu_link {
     margin-left: 10px;
 }
 
@@ -472,7 +480,8 @@ nav {
     justify-content: center;
     font-size: 14px;
 }
-.error{
+
+.error {
     color: red;
 }
 
@@ -533,7 +542,8 @@ nav {
         font-size: 20px;
         margin-right: 10px;
     }
-    .circle_icon.user_icon.user_connected{
+
+    .circle_icon.user_icon.user_connected {
         color: white;
     }
 
@@ -571,5 +581,43 @@ nav {
     .seConnecter {
         display: none;
     }
+
+    .user {
+        margin-right: 6px;
+        padding-left: 6px;
+    }
+
+    .user_connected {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+        margin-right: 0px;
+    }
+
+    .logo img {
+        height: 40px;
+        width: 80px;
+    }
+
+    .logged_name {
+        font-size: 16px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .publish{
+        margin-left: 20px;
+    }
+    .icon{
+        margin-right: 3px;
+    }
+    .menu_container{
+        width: 120px;
+        
+    }
+    .menu_container a{
+        padding: 8px;
+        font-size: 10px;
+    }
+
 
 }

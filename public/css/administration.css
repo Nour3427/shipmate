@@ -42,7 +42,7 @@
 .users_details,
 .delivery_announcements_details,
 .requests_details {
-    width: fit-content;
+    width: 70%;
     margin: auto;
 }
 
@@ -82,26 +82,32 @@
 .name {
     display: flex;
     align-items: center;
-    width: 250px;
+    width:30%;
+    min-width: fit-content;
     color: #2f2f2f;
+    padding-right: 5px;
 }
 
 .role {
-    width: 150px;
+    width: 12%;
+    padding-right: 5px;
 
 }
 
 .email {
-    width: 280px;
+    width: 36%;
+    min-width: fit-content;
+    padding-right: 5px;
 }
 
 .phone {
-    width: 160px;
+    width: 15%;
+    padding-right: 5px;
 
 }
 
 .action {
-    width: 70px;
+    width: 8%;
     display: flex;
     justify-content: center;
     cursor: pointer;
@@ -128,7 +134,6 @@
     border-radius: 15px;
     padding: 15px;
     width: 450px;
-    margin-bottom: 20px;
 }
 
 .user_icon_search {
@@ -266,28 +271,26 @@
 
 
 }
+.theadDiv{
+    justify-content:center ;
+}
 
 .theadDiv div {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .request_status {
-    width: 100px;
+    width: 15%;
 }
-
-.request_status {
-    width: 100px;
-}
-
 .IdDelivery {
-    width: 200px;
+    width: 30%;
     display: flex;
     justify-content: center;
 }
 
 .requested_weight {
-    width: 100px;
+    width: 17%;
 }
 
 .clickStyle {
@@ -344,3 +347,107 @@
 .button_delete {
     background-color: #DD0F0F;
 }
+@media (max-width: 1400px) {
+
+   .users_details, .delivery_announcements_details, .requests_details {
+    width: 100%;
+   }
+}
+@media (max-width: 1100px) {
+
+    .administration_list{
+        width: 70px;
+    }
+    .administration_list p{
+        display: none;
+    }
+    .administration_list div{
+       padding: 15px 10px;
+    }
+    .details_a_delivery, .delivery_container{
+        width: 80%;
+ }
+}
+ @media (max-width: 800px) {
+
+    .users_details, .user_infos{
+     font-size: 12px;
+    }
+    .datas{
+        padding: 40px 15px;
+    }
+    .users_details h4, .delivery_announcements_details h4, .requests_details h4 {
+        font-size: 20px;
+}
+.theadDiv{
+font-size: 13px;
+}
+.delivery_container span {
+    font-size: 12px;
+ }
+ .thead{
+    font-size: 14px;
+ }
+}
+
+ 
+ @media (max-width: 670px) {
+    .users_details h4, .delivery_announcements_details h4, .requests_details h4 {
+        font-size: 18px;
+ }
+ .email, .phone , .user_circle_icon{
+    display: none;
+ }
+ .name{
+    width: 60%;
+ }
+ .role, .action{
+    width: 20%;
+ }
+ .managing{
+    padding: 15px 0;
+ }
+ .id_content, .announcement_delete{
+    width: 34px;
+    height: 34px;
+ }
+.announcement_delete i{
+    font-size: 16px;
+
+}
+.details_a_delivery, .delivery_container{
+    width: 100%;
+}
+.delivery_container span {
+    font-size: 10px;
+ }
+ .delivery_container {
+    padding: 6px;
+ }
+ .transport p {
+    font-size: 10px;
+    top: 21px;
+ }
+ .transport i {
+    font-size: 17px;
+ }
+ .theadDiv{
+    padding: 15px 0;
+ }
+ .thead {
+    font-size: 11px;
+ }
+ .request_thead{
+    display: none;
+ }
+ .requested_weight{
+    display: none;
+ }
+ .request_status {
+    width: 47%;
+}
+.IdDelivery {
+    width: 12%;
+}
+ }
+

@@ -36,7 +36,7 @@
 
                 <div class="user_infos">
                     <div class="name">
-                        <div class="circle_icon user_connected">
+                        <div class="circle_icon user_connected user_circle_icon">
                             <i class="fa-solid fa-user"></i>
                         </div>
                         <?= ucfirst($user->getFirstname()) . ' ' . ucfirst($user->getLastname()); ?>
@@ -132,7 +132,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="action delete_button_container">
+                    <div class="action delete_button_container announcement_delete">
 
                         <button type="button" class="delivery_delete" name="delivery_delete" data_idDelivery="<?= $delivery->getIdDelivery(); ?>">
                             <i class="fa-solid fa-trash-can" title="Supprimer"></i></button>
@@ -158,7 +158,7 @@
 
         <div class="requests_details" id="requests_details">
             <h4>Gestion des demandes de livraions</h4>
-            <div class="thead">
+            <div class="thead request_thead">
                 <div class="name">Nom de demandeur</div>
                 <div class="request_status">Status</div>
                 <div class="IdDelivery">Id de la livraison</div>
@@ -171,7 +171,7 @@
             foreach ($requests as $request) { ?>
                 <div class="user_infos">
                     <div class="name">
-                        <div class="circle_icon user_connected">
+                        <div class="circle_icon user_connected user_circle_icon">
                             <i class="fa-solid fa-user"></i>
                         </div>
                         <?= ucfirst($request->getUser()->getFirstname()) . ' ' . ucfirst($request->getUser()->getLastname()) ?>
