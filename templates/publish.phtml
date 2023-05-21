@@ -1,4 +1,8 @@
 <div class="publish_container">
+    <?php if(isset($_SESSION['successfully_published'])){?>
+           <p class="message_flash"><?= $_SESSION['successfully_published'];
+           unset($_SESSION['successfully_published']); ?></p>
+            <?php } ?>
     <h3>Proposez une livraison </h3>
     <?php if (isset($error_msg)) : ?>
         <p class="error"><?= $error_msg; ?></p>
@@ -82,14 +86,14 @@
                     <label for="weight">
                         <i class="fa-solid fa-weight-scale"></i>
                     </label>
-                    <input type="number" id="weight" name="weight_limit" placeholder="Poids " min="1" step="1" value="<?= isset($delivery) ? $delivery->getSending_date() : '';?>" >
+                    <input type="number" id="weight" name="weight_limit" placeholder="Poids " min="1" step="1" value="<?= isset($delivery) ? $delivery->getWeight_limit() : '';?>" >
                     <span>Kg</span>
                 </div>
                 <div class="input_content ">
                     <label for="price">
                         <i class="fa-solid fa-money-bill-transfer"></i>
                     </label>
-                    <input type="number" id="price" name='price' placeholder="Prix" step="0.01">
+                    <input type="number" id="price" name='price' placeholder="Prix" step="0.01" value="<?= isset($delivery) ? $delivery->getPrice() : '';?>">
                     <span>€/kg</span>
 
                 </div>

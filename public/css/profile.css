@@ -267,7 +267,7 @@ h4 {
 }
 
 .delivery_requests {
-    display: block;
+    display: none;
 }
 
 .titles_list,
@@ -344,7 +344,34 @@ h4 {
 }
 
 .st {
-    padding-top: 10px;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+.user_contact p{
+    font-size: 16px;
+    margin: 2px;
+   }
+   .user_contact i{
+     margin-right: 10px;
+     font-size: 24px;
+    
+   }
+   .user_contact{
+     display: flex;
+     align-items: center;
+     padding: 12px 0;
+     color: #3273A3;
+   }
+   .devider{
+    margin-top: 50px;
+    height: 1px;
+    border-radius: 4px;
+    background-color: rgb(174, 174, 174);
+}
+.devider.bottom{
+    margin-top: 0;
+    margin-bottom: 15px;
 }
 .error.informations_form{
     margin-left: 38%;

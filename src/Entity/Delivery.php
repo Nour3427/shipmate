@@ -13,7 +13,7 @@ class Delivery
     private string $departure_time;
     private string $arrival_time;
     private string $sending_date;
-    private string $transport_tool;
+    private string $transport_tool="";
     private int  $weight_limit;
     private float $price;
     private array $requests; 

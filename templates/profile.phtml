@@ -172,7 +172,7 @@
                                                            <div class="user_icon_profile">
                                                                <i class="fa-solid fa-user"></i>
                                                            </div>
-                                                           <span><?= $delivery_request->getUser()->getFirstname(); ?></span>
+                                                           <span><?= ucfirst($delivery_request->getUser()->getFirstname()); ?></span>
                                                        </div>
                                                    </div>
                                                    <div class="request_user">
@@ -228,7 +228,7 @@
                                                <i class="fa-solid fa-user"></i>
                                            </div>
                                            <span>
-                                               <?= $request->getDelivery()->getUser()->getFirstname(); ?>
+                                               <?= ucfirst($request->getDelivery()->getUser()->getFirstname()); ?>
                                            </span>
 
                                        </div>
@@ -269,6 +269,11 @@
                                        </div>
                                    </div>
                                </div>
+                               <div class="devider"></div>
+                               <div class="user_contact">
+                                   <i class="fa-regular fa-comments"></i><p>Contacter <?= ucfirst($request->getDelivery()->getUser()->getFirstname()); ?></p>
+                               </div>
+                               <div class="devider bottom"></div>
                                <div class="requests_container st">
                                    <?php
                                     $status = $request->getStatus();
@@ -291,17 +296,18 @@
        </div>
    </div>
    </main>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
    <script src="<?= asset('js/delivery.js'); ?>"></script>
-   <!-- <script>
-    $(document).ready(function() {
-        $(".delivery_container").click(function() {
-            // The .index() function retrieves the index of the currently clicked element, relative to the elements with the ".delivery_container" class.
-            var index = $(".delivery_container").index(this);
-            // The .siblings() function selects all elements that share the same parent as the clicked element, but are not the clicked element itself. We then add the .find() function to select the associated ".price_sending_request" elements. Finally, we use the .slideUp() function to hide these elements.
-            $(this).siblings(".delivery_container").find(".price_sending_request").slideUp();
-            // The .find() function is used to select the ".price_sending_request" element associated with the clicked element. We then use the .slideToggle() function to show or hide this element.
+   <script>
+       $(document).ready(function() {
+           $(".announcement_delivery").click(function() {
+               // The .index() function retrieves the index of the currently clicked element, relative to the elements with the ".delivery_container" class.
+               var index = $(".announcement_delivery").index(this);
+               // The .siblings() function selects all elements that share the same parent as the clicked element, but are not the clicked element itself. We then add the .find() function to select the associated ".price_sending_request" elements. Finally, we use the .slideUp() function to hide these elements.
+               $(this).siblings(".announcement_delivery").find(".delivery_requests").slideUp();
+               // The .find() function is used to select the ".price_sending_request" element associated with the clicked element. We then use the .slideToggle() function to show or hide this element.
 
-            $(this).find(".price_sending_request").slideToggle("slow");
-        });
-    });
-</script> -->
+               $(this).find(".delivery_requests").slideToggle("slow");
+           });
+       });
+   </script>

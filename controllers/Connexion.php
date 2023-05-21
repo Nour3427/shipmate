@@ -87,7 +87,7 @@ if (isset($_POST['login_submit'])) {
         } else {
             // $error_message = 'connecté';
             // $user contains user object
-            var_dump($user);
+            // var_dump($user);
             $_SESSION['user_logged_in_id'] = $user->getIdUser();
             $_SESSION['user_logged_in_name'] = $user->getFirstname();
             $_SESSION['user_role'] = $user->getRole();

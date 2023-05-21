@@ -279,7 +279,7 @@ ul {
 }
 .devider{
     margin-top: 50px;
-    height: 4px;
+    height: 1px;
     border-radius: 4px;
     background-color: rgb(174, 174, 174);
 }
@@ -299,7 +299,7 @@ ul {
     padding: 5px 15px;
 }
 
-#accepter {
+#send {
     color: white;
     border: none;
     background: #DD0F0F;
@@ -307,7 +307,7 @@ ul {
     border-radius: 8px;
     padding: 10px 10px;
 }
-#accepter:hover {
+#send:hover {
     cursor: pointer;
     background: #dd0f0faf;
     transition: 0.3s ease-in-out;
@@ -315,6 +315,29 @@ ul {
 .price_sending_request{
     display: none;
 }
+.already_requested {
+    background-color: #a5d1e65c;
+    color:#3273A3;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+  }
+.user_contact p{
+   font-size: 16px;
+   margin: 2px;
+  }
+  .user_contact i{
+    margin-right: 10px;
+    font-size: 24px;
+   
+  }
+  .user_contact{
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
+    color: #3273A3;
+  }
 /* style pour le responsive  */
 @media (max-width: 1200px) {
     .search_form {

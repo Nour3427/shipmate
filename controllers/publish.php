@@ -27,6 +27,10 @@ if (isset($_POST['publish_submit'])) {
         $usr->setIdUser($loggedUser);
         $delivery->setUser($usr);
         $deliveryModel->addDelivery($delivery);
+        $_SESSION['successfully_published']='Votre proposition de livraison a été publiée avec succès';
+        header("Location: publish");
+        exit();
+
         
     } else {
         $error_msg='Tous les champs doivent être remplis';

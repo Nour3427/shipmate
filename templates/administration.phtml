@@ -2,16 +2,20 @@
 <div class="administration_container">
     <div class="administration_list">
         <div id="users" class="users clickStyle">
-            <i class="fa-solid fa-users"></i>
-            <p>Utilisateurs</p>
+            <a class="a" href="#users_details"> <i class="fa-solid fa-users"></i>
+                <p>Utilisateurs</p>
+            </a>
         </div>
         <div class="announcements" id="announcements">
-            <i class="fa-solid fa-box-open"></i>
-            <p>Annonces de livraison</p>
+            <a href="#delivery_announcements_details" class="a"><i class="fa-solid fa-box-open"></i>
+                <p>Annonces de livraison</p>
+            </a>
         </div>
         <div class="requests" id="requests">
-            <i class="fa-solid fa-hand"></i>
-            <p>Demandes de livraison</p>
+            <a href="#requests_details" class="a">
+                <i class="fa-solid fa-hand"></i>
+                <p>Demandes de livraison</p>
+            </a>
         </div>
     </div>
     <div class="datas">
@@ -20,7 +24,7 @@
          1ère div  
         ////////////////////////////////////// -->
 
-        <div class="users_details" id="users_details">
+        <div class="users_details an" id="users_details">
             <h4>Gestion des utilisateurs</h4>
             <div class="thead">
                 <div class="name">Nom</div>
@@ -62,7 +66,7 @@
             <?php } ?>
             <div class="delete_user_popup" id="popup">
                 <p>Voulez-vous vraiment supprimer cet utilisateur?</p>
-                <form action="" method="post">
+                <form action="administration" method="post" id="delete_user_form">
                     <input type="hidden" name="id_user" id="id_user" value=''>
                     <div class="buttons">
                         <button type="submit" class='cancel_delete' name="cancel_delete">Annuler</button>
@@ -74,7 +78,7 @@
         <!-- ////////////////////////////////////////////////
          2eme div  
         ////////////////////////////////////// -->
-        <div class="delivery_announcements_details" id="delivery_announcements_details">
+        <div class="delivery_announcements_details an" id="delivery_announcements_details">
             <h4>Gestion des annonces de livraison</h4>
             <div class="thead theadDiv">
                 <div class="deliveryId">Id</div>
@@ -156,7 +160,7 @@
          3eme div  
         ////////////////////////////////////// -->
 
-        <div class="requests_details" id="requests_details">
+        <div class="requests_details an" id="requests_details">
             <h4>Gestion des demandes de livraions</h4>
             <div class="thead request_thead">
                 <div class="name">Nom de demandeur</div>
@@ -221,3 +225,17 @@
 
 
     <script src="<?= asset('js/administration.js'); ?>"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#delete_user_form").on('submit',function(e){
+                e.preventDefault();
+                let url='administration';
+                let data=$(this).serialize();
+                $.post(url,data,function(response){
+                    $('.delete_user_popup').hide();
+                  
+                });
+            })
+        })
+    </script> -->

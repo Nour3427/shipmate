@@ -19,10 +19,12 @@ if (isset($_POST['search'])) {
     }
 }
 
+// echo '<pre>';
+// print_r($results);
+
 
 if (isset($_POST['send'])) {
-    $loggedUser = $_SESSION['user_logged_in_id'];
-    if (!isset($loggedUser)) {
+    if (!isset($_SESSION['user_logged_in_id'])) {
         // if user is not connected
         header("Location: connexion");
         exit();
@@ -34,6 +36,11 @@ if (isset($_POST['send'])) {
         exit();
     }
 }
+
+// get all delivery requests from the logged in user
+$requests = $requestModel->getRequestByUserID($_SESSION['user_logged_in_id']);
+// echo '<pre>';
+// print_r($requests);
 
 
 $template = 'search';

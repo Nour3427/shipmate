@@ -1,3 +1,6 @@
+.an.hidden {
+    display: none;
+  }
 .administration_container {
     display: flex;
     width: 100%;
@@ -10,6 +13,10 @@
     width: 320px;
     padding: 40px 0;
     background: white;
+}
+.administration_list a{
+    display: flex;
+    align-items: center;
 }
 
 .administration_list div {

@@ -77,7 +77,7 @@
                                         <div class="user_icon_search">
                                             <i class="fa-solid fa-user"></i>
                                         </div>
-                                        <span><?= $result->getUser()->getFirstName() ?></span>
+                                        <span><?= ucfirst($result->getUser()->getFirstName()) ?></span>
                                     </div>
                                     <div class="price_per_kg">
                                         <span><?= $result->getPrice() ?> €/Kg</span>
@@ -121,13 +121,39 @@
                                         <p id="total_price"> <?= $totale_price; ?> €</p>
                                     </div>
                                     <div class="devider bottom"></div>
-                                    <div class="sending_request">
-                                        <form id="form" action="" method="post">
-                                            <input type="hidden" name="id_delivery" value="<?= $result->getIdDelivery() ?>">
-                                            <input type="hidden" name="user_weight" value="<?= $weight;?>">
-                                            <input type="submit" id="accepter" name="send" value="Envoyer une demande de livraison ">
-                                        </form>
-                                    </div>
+
+                                    <?php
+                                    $already_requested = false;
+                                    foreach ($requests as $request) {
+                                        if($result->getIdDelivery() == $request->getDelivery_id()){;
+                                        $already_requested = true;
+                                        break;
+                                        }
+                                    }
+                                    if ($_SESSION['user_logged_in_id'] == $result->getUser()->getIdUser()) {
+                                    } elseif ($already_requested) {
+                                    ?>
+                                        <div class="user_contact">
+                                        <i class="fa-regular fa-comments"></i><p>Contacter <?= ucfirst($result->getUser()->getFirstName()) ?></p>
+                                        </div>
+                                        <div class="devider bottom"></div>
+                                        <div class="already_requested">
+                                            Demande déjà envoyée
+                                        </div>
+                                    <?php } else { ?>
+                                        <div class="user_contact">
+                                        <i class="fa-regular fa-comments"></i><p>Contacter <?= $result->getUser()->getFirstName() ?></p>
+                                        </div>
+                                        <div class="devider bottom"></div>
+
+                                        <div class="sending_request">
+                                            <form id="form" action="" method="post">
+                                                <input type="hidden" name="id_delivery" value="<?= $result->getIdDelivery() ?>">
+                                                <input type="hidden" name="user_weight" value="<?= $weight; ?>">
+                                                <input type="submit" id="send" name="send" value="Envoyer une demande de livraison ">
+                                            </form>
+                                        </div>
+                                    <?php } ?>
 
                                 </div>
 
@@ -172,16 +198,16 @@
 
     });
 
-    $(document).ready(function(){
-  $(".delivery_container").click(function(){
-     // The .index() function retrieves the index of the currently clicked element, relative to the elements with the ".delivery_container" class.
-    var index = $(".delivery_container").index(this);
-    // The .siblings() function selects all elements that share the same parent as the clicked element, but are not the clicked element itself. We then add the .find() function to select the associated ".price_sending_request" elements. Finally, we use the .slideUp() function to hide these elements.
-    $(this).siblings(".delivery_container").find(".price_sending_request").slideUp();
-     // The .find() function is used to select the ".price_sending_request" element associated with the clicked element. We then use the .slideToggle() function to show or hide this element.
+    $(document).ready(function() {
+        $(".delivery_container").click(function() {
+            // The .index() function retrieves the index of the currently clicked element, relative to the elements with the ".delivery_container" class.
+            var index = $(".delivery_container").index(this);
+            // The .siblings() function selects all elements that share the same parent as the clicked element, but are not the clicked element itself. We then add the .find() function to select the associated ".price_sending_request" elements. Finally, we use the .slideUp() function to hide these elements.
+            $(this).siblings(".delivery_container").find(".price_sending_request").slideUp();
+            // The .find() function is used to select the ".price_sending_request" element associated with the clicked element. We then use the .slideToggle() function to show or hide this element.
 
-    $(this).find(".price_sending_request").slideToggle("slow");
-  });
-});
+            $(this).find(".price_sending_request").slideToggle("slow");
+        });
+    });
 </script>
 <script src="<?= asset('js/geonamesApiAjax.js'); ?>"></script>

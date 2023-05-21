@@ -38,5 +38,5 @@ function isValid(Delivery $delivery)
 {
     return $delivery->getDeparture_city() != "" && $delivery->getDestination_city() != ""
         && $delivery->getDeparture_time() != "" && $delivery->getArrival_time() != "" && $delivery->getSending_date() != ""
-        && $delivery->getTransport_tool() != "" && $delivery->getWeight_limit() != "" && $delivery->getPrice() != "";
+        && $delivery->getTransport_tool() != "" && $delivery->getWeight_limit() != 0 && $delivery->getPrice() != 0;
 }
