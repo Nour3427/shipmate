@@ -15,6 +15,7 @@ class Delivery
     private string $sending_date;
     private string $transport_tool="";
     private int  $weight_limit;
+    private int  $remaining_weight;
     private float $price;
     private array $requests; 
     private User $user;
@@ -230,6 +231,24 @@ class Delivery
     public function setRequests(array $requests): self
     {
         $this->requests = $requests;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of remaining_weight
+     */
+    public function getRemaining_weight(): int
+    {
+        return $this->remaining_weight;
+    }
+
+    /**
+     * Set the value of remaining_weight
+     */
+    public function setRemaining_weight(int $remaining_weight): self
+    {
+        $this->remaining_weight = $remaining_weight;
 
         return $this;
     }

@@ -9,7 +9,7 @@ function asset(string $path)
 
 function constructUrl(string $path, array $params = [])
 {
-    $url = './' . $path;
+    $url = BASE_URL . $path;
 
     if ($params) {
         $url .= '?' . http_build_query($params);

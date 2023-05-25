@@ -88,7 +88,7 @@
            <div class="announcement_details">
                <h4>Mes annonces</h4>
                <?php
-                if (count($deliveries) == 0) { ?>
+                if (empty($deliveries)) { ?>
                    <div class="no_result">
                        <h3>Vous n'avez aucune annonce</h3>
                    </div>
@@ -98,11 +98,12 @@
                        <?php foreach ($deliveries as $delivery) { ?>
 
                            <div class="delivery_container announcement_delivery hover_div">
-                               <div class="delivery_conten">
+                               <div class="delivery_content">
 
                                    <div class="user_details">
                                        <div class="user_name">
-                                           <span class="delivery_date"><?= $delivery->getSending_date(); ?></span>
+                                           <span class="delivery_date"><?= date('d-m-Y', strtotime($delivery->getSending_date()));?>
+                                            </span>
                                        </div>
                                        <div class="price_per_kg">
                                            <span><?= $delivery->getPrice(); ?> €/Kg</span>
@@ -140,13 +141,10 @@
                                </div>
                                <div class="requests_container delivery_requests">
                                    <?php
-                                    $delivery_requests = $RequestModel->getRequests($delivery->getIdDelivery());
-                                    //  echo '<pre>';
-                                    //  print_r($delivery_requests);
-                                    //  $requesttts=[];
-                                    if (count($delivery_requests) == 0) { ?>
-                                       <div class="no_result">
-                                           <h3>Aucune demande pour cette annonce</h3>
+                                    $delivery_requests = $delivery->getRequests();
+                                    if (empty($delivery_requests)) { ?>
+                                       <div class="no_result_r">
+                                           <p class='nn'>Aucune demande pour cette annonce</p>
                                        </div>
                                    <?php } else { ?>
                                        <div class="requests_list">
@@ -182,13 +180,17 @@
                                                        <?php
                                                         $status_requests = $delivery_request->getStatus();
                                                         if ($status_requests == 'Acceptée') { ?>
-                                                           <i class="fa-regular fa-circle-check" style="color: #17a139;"></i>
+                                                           <i class="fa-regular fa-circle-check" style="color: #17a139;" title="Demande acceptée"></i>
                                                        <?php } else { ?>
-
-                                                           <form id="form" action="" method="post">
-                                                               <input type="hidden" name="id_commande" value="1"> <!-- Remplacez "1" par votre propre ID de commande -->
-                                                               <input type="submit" id="accepter" name="accept" value="Accepter">
+                                                        <div class="form_container">
+                                                           <form id="request_form" class="request_form" data-ajaxurl="<?=constructUrl('/ajaxUpdateRequest')?>" action="profile" method="post">
+                                                               <input type="hidden" name="idRequest" value="<?= $delivery_request->getIdRequest(); ?>">
+                                                               <input type="hidden" name="weight" value="<?= $delivery_request->getWeight(); ?>">
+                                                               <input type="hidden" name="idDelivery" value="<?= $delivery->getIdDelivery(); ?>">
+                                                               <input type="hidden" name="weight_limit" value="<?= $delivery->getWeight_limit(); ?>">
+                                                               <input type="submit" id="request_submit" name="accept" class="accept_button" value="Accepter"> 
                                                            </form>
+                                                        </div>
                                                        <?php } ?>
 
                                                    </div>
@@ -233,7 +235,7 @@
 
                                        </div>
                                        <div class="delivery_date">
-                                           <span class="delivery_date"><?= $request->getDelivery()->getSending_date(); ?></span>
+                                           <span class="delivery_date"><?= date('d-m-Y', strtotime($request->getDelivery()->getSending_date())); ?></span>
                                        </div>
                                        <div class="price_per_kg">
                                            <span><?= $request->getDelivery()->getPrice(); ?> €/Kg</span>
@@ -299,15 +301,29 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
    <script src="<?= asset('js/delivery.js'); ?>"></script>
    <script>
-       $(document).ready(function() {
-           $(".announcement_delivery").click(function() {
-               // The .index() function retrieves the index of the currently clicked element, relative to the elements with the ".delivery_container" class.
-               var index = $(".announcement_delivery").index(this);
-               // The .siblings() function selects all elements that share the same parent as the clicked element, but are not the clicked element itself. We then add the .find() function to select the associated ".price_sending_request" elements. Finally, we use the .slideUp() function to hide these elements.
-               $(this).siblings(".announcement_delivery").find(".delivery_requests").slideUp();
-               // The .find() function is used to select the ".price_sending_request" element associated with the clicked element. We then use the .slideToggle() function to show or hide this element.
+    //    $(document).ready(function() {
+    //        $(".delivery_content").click(function() {
+    //            // The .index() function retrieves the index of the currently clicked element, relative to the elements with the ".delivery_container" class.
+    //            var index = $(".delivery_content").index(this);
+    //            // The .siblings() function selects all elements that share the same parent as the clicked element, but are not the clicked element itself. We then add the .find() function to select the associated ".price_sending_request" elements. Finally, we use the .slideUp() function to hide these elements.
+    //            $(this).siblings(".delivery_content").find(".delivery_requests").slideUp();
+    //            // The .find() function is used to select the ".price_sending_request" element associated with the clicked element. We then use the .slideToggle() function to show or hide this element.
 
-               $(this).find(".delivery_requests").slideToggle("slow");
-           });
-       });
+    //            $(this).find(".delivery_requests").slideToggle("slow");
+    //        });
+    //    });
+
+    $(document).ready(function() {
+   $(".delivery_content").click(function() {
+       const deliveryRequests = $(this).next(".delivery_requests");
+
+       if (deliveryRequests.is(":hidden")) {
+           $(".delivery_requests").slideUp();
+           deliveryRequests.slideDown("slow");
+       } else {
+           deliveryRequests.slideUp("slow");
+       }
+   });
+});
+
    </script>

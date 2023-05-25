@@ -7,10 +7,11 @@ const request_details_container=document.querySelector('.request_details_contain
 const announcement_delivery=document.querySelectorAll('.announcement_delivery');
 const delivery_requests=document.querySelectorAll('.delivery_requests');
 const message_flash=document.querySelector('.message_flash');
-
+if(message_flash){
 setTimeout(() => {
   message_flash.style.display='none';
 },3000);
+}
 
 
 
@@ -44,42 +45,48 @@ request.addEventListener('click',function(){
     // delivery_requests[i].style.display='none';
 })
 
+  // FONCTIONS
+async function onSubmitForm(event)
+{
+    // Stopper la soumission du formulaire
+    event.preventDefault();
 
-   
+    // Récupérer les données du formulaire
+    const form = event.currentTarget;
+    var formparent = form.parentNode;
+    const formData = new FormData(form);
 
-
-// const statuss = document.querySelector('.statuss');
-
-// const form = document.getElementById('form');
-// const response = document.getElementById('response');
-
-// // Ajouter un gestionnaire d'événement sur la soumission du formulaire
-// form.addEventListener('submit', function(event) {
-//   // Empêcher le rechargement de la page par défaut
-//   event.preventDefault();
-
-//   // Récupérer les données du formulaire
-//   const formData = new FormData(form);
-
-//   // Envoyer les données du formulaire via AJAX
-//   fetch('', {
-//     method: 'POST',
-//     body: formData
-//   })
-//   .then(data => {
-//     // Afficher la réponse du serveur
-//     response.innerHTML = data;
+    // Envoi des données au serveur
+    const options = {
+        method: 'POST',
+        body: formData
+    };
     
-//     console.log('nour');
-//     statuss.innerHTML = '<i class="fa-regular fa-circle-check" style="color: #17a139;"></i>';
-//   })
-//   .catch(error => {
-//     console.error(error);
-    
-//   });
-// });
+    const url = form.dataset.ajaxurl;
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    form.remove();
+// Créer l'élément <p> avec le texte "Demande acceptée"
+    const spanElement = document.createElement('span');
+    spanElement.innerHTML = '<i class="fa-regular fa-circle-check" style="color: #17a139;" title="Demande acceptée"></i>';
+  
+    // Insérer l'élément <p> à l'intérieur du parent
+    formparent.appendChild(spanElement);
 
 
+
+    }
+
+
+
+// CODE PRINCIPAL
+form=document.querySelectorAll('.request_form');
+for(let i=0; i<form.length; i++){
+form[i].addEventListener('submit', onSubmitForm);
+}
+  
 
 
 

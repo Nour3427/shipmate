@@ -10,6 +10,7 @@ $deliveryModel = new DeliveryModel();
 if (isset($_POST['publish_submit'])) {
     // conversion from string to int and float 
     $_POST['weight_limit']=intval($_POST['weight_limit']);
+    $_POST['remaining_weight']=intval($_POST['weight_limit']);
     $_POST['price']=floatval($_POST['price']);
 
     $delivery = new Delivery($_POST);

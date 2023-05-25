@@ -90,33 +90,24 @@ if (isset($_POST['modify_submit'])) {
         }
     }
 }
+
 $requests = $RequestModel->getRequestByUserID($idUser);
-// echo '<pre>';
-// print_r($requests);
 $deliveries=$DeliveryModel->getDeliveriesWithRequests($idUser);
-// $delivery_requests=$RequestModel->getRequests($delivery->getIdDelivery());
+// if(isset($_POST['accept'])){
+//     $RequestModel->updateRequest('Acceptée', $_POST['idRequest']);
+//     $remaining_weight=intval($_POST['weight_limit'])-intval($_POST['weight']);
+//     $DeliveryModel->updateDelivery($remaining_weight,$_POST['idDelivery']);
+//     $result = [
+//         'id' => $_POST['idRequest'],
+//         'weight'=>$_POST['weight'],
+//         'remaining_weight' => $remaining_weight,
 
-// var_dump($deliveries);
+//     ];
 
-
-    
-    
-    // echo '<pre>';
-    // print_r($deliveries);
-
-
-
-
-
-
-// foreach ($requests as $request) {
-//     echo '<pre>';
-//     print_r($request);
-//     //    $n= $request->getDelivery()->getUser()->getFirstname();
-//     // var_dump($n);
+//     // Retourne au client la réponse en JSON
+//     echo json_encode($result);
+   
 // }
-
-
 
 $template = 'profile';
 include './templates/base.phtml';

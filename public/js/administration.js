@@ -1,17 +1,4 @@
-const users = document.getElementById('users');
-const announcements = document.getElementById('announcements');
-const requests = document.getElementById('requests');
-// const users_details = document.getElementById('users_details');
-// const delivery_announcements_details = document.getElementById('delivery_announcements_details');
-// const requests_details = document.getElementById('requests_details');
-const user_details_link=document.querySelector('a[href="#users_details"]')
-const delivery_announcements_details_link=document.querySelector('a[href="#delivery_announcements_details"]')
-const requests_details_link=document.querySelector('a[href="#requests_details"]')
-const user_details=document.getElementById('users_details')
-const delivery_announcements_details=document.getElementById('delivery_announcements_details')
-const requests_details=document.getElementById('requests_details')
 
-const action = document.querySelectorAll('.action');
 const delete_user_popup = document.querySelector('.delete_user_popup');
 const background = document.querySelector('.background');
 const cancel_delete = document.querySelector('.cancel_delete');
@@ -25,11 +12,10 @@ const request_delete = document.querySelectorAll('.request_delete');
 const delete_request_popup = document.querySelector('.delete_request_popup');
 let id_request= document.getElementById('id_request');
 const request_cancel_delete = document.querySelector('.request_cancel_delete');
+var liens = document.querySelectorAll('.a');
 
-
-// Fonction pour afficher le div correspondant à l'ancre dans l'URL et masquer les autres divs
 function afficherDivAncre(ancre) {
-    var divs = document.querySelectorAll('.an'); // Sélectionner tous les divs à masquer
+    var divs = document.querySelectorAll('.pricipal_divs'); // Sélectionner tous les divs à masquer
   
     // Parcourir les divs et les masquer sauf celui correspondant à l'ancre
     divs.forEach(function(div) {
@@ -40,83 +26,39 @@ function afficherDivAncre(ancre) {
       }
     });
   }
+
   
-  // Sélectionnez tous les liens que vous souhaitez surveiller
-  var liens = document.querySelectorAll('.a');
-  
-  // Parcourez les liens et ajoutez un écouteur d'événement click à chacun
-  liens.forEach(function(lien) {
-    lien.addEventListener('click', function(event) {
-      event.preventDefault(); // Empêcher le comportement de lien par défaut
-      
-  
-      var ancre = this.getAttribute('href').substring(1); // Récupérer l'ancre du lien sans le symbole dièse (#)
-      if (ancre) {
-        window.location.hash = ancre; // Définir l'ancre dans l'URL
-        afficherDivAncre(ancre); // Afficher le div correspondant à l'ancre
-      }
-    });
-  });
-document.addEventListener('DOMContentLoaded', function() {
-    var ancre = window.location.hash.substring(1); // Récupérer l'ancre de l'URL sans le symbole dièse (#)
+liens.forEach(function(lien) {
+
+  lien.addEventListener('click', function(event) {
+    event.preventDefault();
+    
+    var ancre = this.getAttribute('href').substring(1);
     if (ancre) {
-      afficherDivAncre(ancre); // Afficher le div correspondant à l'ancre initiale
+      window.location.hash = ancre;
+      afficherDivAncre(ancre);
+      
+      // Ajouter la classe "active" au div parent du lien actuel
+      var divParent = this.parentNode;
+      divParent.classList.add('active');
+      
+      // Supprimer la classe "active" des divs parents des autres liens
+      liens.forEach(function(l) {
+        if (l !== lien) {
+          l.parentNode.classList.remove('active');
+        }
+      });
     }
   });
-  
-//   Événement de chargement initial pour afficher le div correspondant à l'ancre initiale
-//   window.addEventListener('load', function() {
-//     var ancre = window.location.hash.substring(1); // Récupérer l'ancre de l'URL sans le symbole dièse (#)
-//     if (ancre) {
-//       afficherDivAncre(ancre); // Afficher le div correspondant à l'ancre initiale
-//     }
-//   });
+});
 
-
-
-
-// user_details_link.addEventListener('click', function(event) {
-//     user_details.style.display = 'block';
-//     delivery_announcements_details.style.display = 'none';
-//     requests_details.style.display = 'none';
-//     announcements.classList.remove('clickStyle');
-//     requests.classList.remove('clickStyle');
-//     users.classList.add('clickStyle');
-//     // var currentAnchor = window.location.hash;
-
-//     // // Afficher l'ancre dans la console
-//     // console.log(currentAnchor);
-//   });
-
-
-//   delivery_announcements_details_link.addEventListener('click', function(event) {
-
-//     delivery_announcements_details.style.display = 'block';
-//     requests_details.style.display = 'none';
-//     user_details.style.display = 'none';
-//     users.classList.remove('clickStyle');
-//     requests.classList.remove('clickStyle');
-//     announcements.classList.add('clickStyle');
-//     // var currentAnchor = window.location.hash;
-
-//     // // Afficher l'ancre dans la console
-//     // console.log(currentAnchor);
-
-//   });
-//   requests_details_link.addEventListener('click', function(event) {
-//     delivery_announcements_details.style.display = 'none';
-//     requests_details.style.display = 'block';
-//     user_details.style.display = 'none';
-//     announcements.classList.remove('clickStyle');
-//     users.classList.remove('clickStyle');
-//     requests.classList.add('clickStyle');
-//     // var currentAnchor = window.location.hash;
-
-//     // // Afficher l'ancre dans la console
-//     // console.log(currentAnchor);
-    
-
-//   });
+document.addEventListener('DOMContentLoaded', function() {
+  var ancre = window.location.hash.substring(1);
+  if (ancre) {
+    document.querySelector('.a[href="#' + ancre + '"]').parentNode.classList.add('active');
+    afficherDivAncre(ancre);
+  }
+});
 
 
 for (let i = 0; i < delete_user.length; i++) {
@@ -165,3 +107,4 @@ for (let i = 0; i < request_delete.length; i++) {
     });
 
 }
+ 

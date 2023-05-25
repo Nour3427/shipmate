@@ -65,16 +65,16 @@ class RequestModel extends AbstractModel
 
     }
 
-    function updateRequest($status)
-    {
-        $sql = 'UPDATE delivery_request set status= ?';
-        $this->db->prepareAndExecute($sql, [$status]);
-    }
-//     function updateRequest($status, $request_id)
-// {
-//     $sql = 'UPDATE delivery_request SET status = ? WHERE idRequest = ?';
-//     $this->db->prepareAndExecute($sql, [$status, $request_id]);
-// }
+    // function updateRequest($status)
+    // {
+    //     $sql = 'UPDATE delivery_request set status= ?';
+    //     $this->db->prepareAndExecute($sql, [$status]);
+    // }
+    function updateRequest($status, $idRequest)
+{
+    $sql = 'UPDATE delivery_request SET status = ? WHERE idRequest = ?';
+    $this->db->prepareAndExecute($sql, [$status, $idRequest]);
+}
 
 function getAllRequests(){
     $sql = 'SELECT * FROM delivery_request as D INNER JOIN user as U ON D.user_id = U.idUser';

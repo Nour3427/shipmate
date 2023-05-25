@@ -23,13 +23,13 @@ class DeliveryModel extends AbstractModel
     {
 
         $sql = 'INSERT INTO delivery 
-    (departure_city, destination_city,user_id, departure_time, arrival_time, sending_date, weight_limit, price, transport_tool)
-     VALUES (?,?,?,?,?,?,?,?,?)';
+    (departure_city, destination_city,user_id, departure_time, arrival_time, sending_date, weight_limit, remaining_weight, price, transport_tool)
+     VALUES (?,?,?,?,?,?,?,?,?,?)';
 
         $this->db->prepareAndExecute($sql, [
             $delivery->getDeparture_city(), $delivery->getDestination_city(),
             $delivery->getUser()->getIdUser(), $delivery->getDeparture_time(), $delivery->getArrival_time(),
-            $delivery->getSending_date(), $delivery->getWeight_limit(), $delivery->getPrice(), $delivery->getTransport_tool()
+            $delivery->getSending_date(), $delivery->getWeight_limit(), $delivery->getRemaining_Weight(), $delivery->getPrice(), $delivery->getTransport_tool()
         ]);
     }
 
@@ -69,26 +69,22 @@ class DeliveryModel extends AbstractModel
          where U.idUser = ?';
 
         $results = $this->db->getAllResults($sql, [$userID]);
-        // echo '<pre>';
-        // print_r($results);
-        // exit();
-
-
-        // if (!$results) {
-        //     return null;
-        // }
+        if (!$results) {
+            return null;
+        }
         $deliveries = [];
-        // $RequestModel = new RequestModel();
+        $RequestModel = new RequestModel();
         foreach ($results as $result) {
-            // $result['user'] = new User($result);
-            // $result['requests'] = $RequestModel->getRequests($result['idDelivery']); 
-            //   echo '<pre>';
-            // print_r($result);
-            // exit();
-
-            $deliveries[] = new Delivery($result);
+             $result['user'] = new User($result);
+             $result['requests'] = $RequestModel->getRequests($result['idDelivery']); 
+             $deliveries[] = new Delivery($result);
         }
         return $deliveries;
+    }
+    function updateDelivery($remaining_weight, $idDelivery)
+    {
+        $sql = 'UPDATE delivery SET remaining_weight = ? WHERE idDelivery = ?';
+        $this->db->prepareAndExecute($sql, [$remaining_weight, $idDelivery]);
     }
 
     function getAllDeliveries()

@@ -124,6 +124,13 @@ h4 {
     color: GREY;
 
 }
+.no_result_r p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #767676;
+    font-size: 20px;
+}
 
 .search_results {
     width: 70%;
@@ -317,7 +324,7 @@ h4 {
     color: rgb(255, 255, 255);
 } */
 
-#accepter {
+.accept_button{
     color: white;
     border: none;
     background: #DD0F0F;
@@ -328,7 +335,7 @@ h4 {
 
 }
 
-#accepter:hover {
+.accept_button:hover {
 
     cursor: pointer;
     background: #dd0f0faf;

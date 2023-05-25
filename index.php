@@ -25,9 +25,9 @@ switch ($path) {
     case 'profile':
         require './controllers/profile.php';
         break;
-    // case 'annonce_details':
-    //     require './controllers/annonce_details.php';
-    //     break;
+        // case 'annonce_details':
+        //     require './controllers/annonce_details.php';
+        //     break;
     case 'publish':
         require './controllers/publish.php';
         break;
@@ -37,13 +37,16 @@ switch ($path) {
     case 'logout':
         require './controllers/logout.php';
         break;
+    case 'ajaxUpdateRequest':
+        require './controllers/ajaxUpdateRequest.php';
+        break;
     case 'success':
         if (isset($_SESSION['success'])) {
             require './controllers/success.php';
             break;
         }
     case 'administration':
-        if (isset($_SESSION['user_role']) && $_SESSION['user_role']=='admin' ) {
+        if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
             require './controllers/administration.php';
             break;
         }

@@ -67,7 +67,7 @@
                     </div>
                 <?php } else { ?>
                     <div class="search_results">
-                        <span class="delivery_date"><?= $_POST['date'] ?></span>
+                        <span class="delivery_date"><?=  date('d-m-Y', strtotime($_POST['date'])); ?></span>
                         <?php foreach ($results as $result) { ?>
 
                             <!-- <a href="<= constructUrl('annonce_details', ['id' => $result->getIdDelivery()]); ?>"> -->
@@ -103,7 +103,7 @@
 
 
 
-                                            <p>Max: <?= $result->getWeight_limit() ?> Kg</p>
+                                            <p>Max: <?= $result->getRemaining_Weight() ?> Kg</p>
                                         </div>
                                         <div class="right_line"></div>
                                     </div>

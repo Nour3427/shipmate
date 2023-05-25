@@ -87,6 +87,7 @@
                         <i class="fa-solid fa-weight-scale"></i>
                     </label>
                     <input type="number" id="weight" name="weight_limit" placeholder="Poids " min="1" step="1" value="<?= isset($delivery) ? $delivery->getWeight_limit() : '';?>" >
+                    <input type="hidden" name="remaining_weight">
                     <span>Kg</span>
                 </div>
                 <div class="input_content ">

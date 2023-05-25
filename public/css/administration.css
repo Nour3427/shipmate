@@ -300,7 +300,7 @@
     width: 17%;
 }
 
-.clickStyle {
+.active {
     background-color: #9cdffd9e;
     border-left: 8px solid #028ac9;
 }
