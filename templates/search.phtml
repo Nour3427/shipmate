@@ -67,7 +67,7 @@
                     </div>
                 <?php } else { ?>
                     <div class="search_results">
-                        <span class="delivery_date"><?=  date('d-m-Y', strtotime($_POST['date'])); ?></span>
+                        <span class="delivery_date"><?= date('d-m-Y', strtotime($_POST['date'])); ?></span>
                         <?php foreach ($results as $result) { ?>
 
                             <!-- <a href="<= constructUrl('annonce_details', ['id' => $result->getIdDelivery()]); ?>"> -->
@@ -124,36 +124,53 @@
 
                                     <?php
                                     $already_requested = false;
-                                    foreach ($requests as $request) {
-                                        if($result->getIdDelivery() == $request->getDelivery_id()){;
-                                        $already_requested = true;
-                                        break;
+                                    if (isset($_SESSION['user_logged_in_id'])) {
+                                        foreach ($requests as $request) {
+                                            if ($result->getIdDelivery() == $request->getDelivery_id()) {;
+                                                $already_requested = true;
+                                                break;
+                                            }
                                         }
-                                    }
-                                    if ($_SESSION['user_logged_in_id'] == $result->getUser()->getIdUser()) {
-                                    } elseif ($already_requested) {
+                                        if ($_SESSION['user_logged_in_id'] == $result->getUser()->getIdUser()) {
+                                        } elseif ($already_requested) {
                                     ?>
-                                        <div class="user_contact">
-                                        <i class="fa-regular fa-comments"></i><p>Contacter <?= ucfirst($result->getUser()->getFirstName()) ?></p>
-                                        </div>
-                                        <div class="devider bottom"></div>
-                                        <div class="already_requested">
-                                            Demande déjà envoyée
-                                        </div>
-                                    <?php } else { ?>
-                                        <div class="user_contact">
-                                        <i class="fa-regular fa-comments"></i><p>Contacter <?= $result->getUser()->getFirstName() ?></p>
-                                        </div>
-                                        <div class="devider bottom"></div>
+                                            <div class="user_contact">
+                                                <i class="fa-regular fa-comments"></i>
+                                                <p>Contacter <?= ucfirst($result->getUser()->getFirstName()) ?></p>
+                                            </div>
+                                            <div class="devider bottom"></div>
+                                            <div class="already_requested">
+                                                Demande déjà envoyée
+                                            </div>
+                                        <?php } else { ?>
+                                            <div class="user_contact">
+                                                <i class="fa-regular fa-comments"></i>
+                                                <p>Contacter <?= $result->getUser()->getFirstName() ?></p>
+                                            </div>
+                                            <div class="devider bottom"></div>
 
-                                        <div class="sending_request">
-                                            <form id="form" action="" method="post">
-                                                <input type="hidden" name="id_delivery" value="<?= $result->getIdDelivery() ?>">
-                                                <input type="hidden" name="user_weight" value="<?= $weight; ?>">
-                                                <input type="submit" id="send" name="send" value="Envoyer une demande de livraison ">
-                                            </form>
-                                        </div>
-                                    <?php } ?>
+                                            <div class="sending_request">
+                                                <form id="form" action="" method="post">
+                                                    <input type="hidden" name="id_delivery" value="<?= $result->getIdDelivery() ?>">
+                                                    <input type="hidden" name="user_weight" value="<?= $weight; ?>">
+                                                    <input type="submit" id="send" name="send" value="Envoyer une demande de livraison ">
+                                                </form>
+                                            </div>
+                                    <?php }
+                                    }else{?>
+                                        <div class="user_contact">
+                                        <i class="fa-regular fa-comments"></i>
+                                        <p>Contacter <?= $result->getUser()->getFirstName() ?></p>
+                                    </div>
+                                    <div class="devider bottom"></div>
+
+                                    <div class="sending_request">
+                                        <form id="form" action="" method="post">
+                                            <input type="hidden" name="id_delivery" value="<?= $result->getIdDelivery() ?>">
+                                            <input type="hidden" name="user_weight" value="<?= $weight; ?>">
+                                            <input type="submit" id="send" name="send" value="Envoyer une demande de livraison ">
+                                        </form>
+                                    </div> <?php }?>
 
                                 </div>
 
