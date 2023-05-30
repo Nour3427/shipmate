@@ -14,25 +14,23 @@ if (isset($_POST['publish_submit'])) {
     $_POST['price']=floatval($_POST['price']);
 
     $delivery = new Delivery($_POST);
-
-    $loggedUser = $_SESSION['user_logged_in_id'];
-
-    if (!isset($loggedUser)) {
-        // if user is not connected
-        header("Location: connexion");
-        exit();
-    }
-
+   
     if (isValid($delivery)) {
-        $usr = new User();
+        $usr = new User(); 
+       if(isset($_SESSION['user_logged_in_id'])){
+       $loggedUser = $_SESSION['user_logged_in_id']; 
+       
         $usr->setIdUser($loggedUser);
         $delivery->setUser($usr);
-        $deliveryModel->addDelivery($delivery);
+         $deliveryModel->addDelivery($delivery);
         $_SESSION['successfully_published']='Votre proposition de livraison a été publiée avec succès';
         header("Location: publish");
         exit();
-
-        
+       }else{
+        // if user is not connected
+        header("Location: login");
+        exit();
+        }        
     } else {
         $error_msg='Tous les champs doivent être remplis';
     }

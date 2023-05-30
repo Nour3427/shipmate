@@ -105,5 +105,5 @@ if (isset($_POST['signup_submit'])) {
     $_SESSION['show_signup'] = false;
 }
 // If 'show_signup' is true, the 'login' div is hidden and the 'signup' div is displayed.
-$template='connexion';
+$template='login';
 include './templates/base.phtml';

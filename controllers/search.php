@@ -27,7 +27,7 @@ if (isset($_POST['send'])) {
 
     if (!isset($_SESSION['user_logged_in_id'])) {
         // if user is not connected
-        header("Location: connexion");
+        header("Location: login");
         exit();
     } else {
         $user_weight = intval($_POST['user_weight']);
@@ -38,11 +38,5 @@ if (isset($_POST['send'])) {
     }
 $requests = $requestModel->getRequestByUserID($_SESSION['user_logged_in_id']);
 }
-// get all delivery requests from the logged in user
-
-// echo '<pre>';
-// print_r($requests);
-
-
 $template = 'search';
 include './templates/base.phtml';

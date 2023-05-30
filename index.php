@@ -19,8 +19,8 @@ switch ($path) {
     case '':
         require './controllers/home.php';
         break;
-    case 'connexion':
-        require './controllers/connexion.php';
+    case 'login':
+        require './controllers/login.php';
         break;
     case 'profile':
         require './controllers/profile.php';
