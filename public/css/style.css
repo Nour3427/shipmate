@@ -528,14 +528,9 @@ nav {
 }
 
 @media (max-width: 850px) {
-    .search p {
+    .search p, .publish p {
         display: none;
     }
-
-    .publish p {
-        display: none;
-    }
-
     .user_icon {
         width: 30px;
         height: 30px;

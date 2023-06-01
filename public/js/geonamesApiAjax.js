@@ -6,17 +6,6 @@ const username = "nourtest34";
 
 
 for (let i = 0; i < city_input.length; i++) {
-    document.addEventListener("click", (event) => {
-        // si l'élément cliqué n'est pas l'input ni la liste de résultats
-        if (event.target !== city_input[i] || event.target !== list_container[i]) {
-            // masquer la liste de résultats
-            list_container[i].style.display = "none";
-
-        }
-    });
-
-
-
     city_input[i].addEventListener('input', function () {
         //  le code à exécuter lorsque l'événement input se produit
 
@@ -76,6 +65,16 @@ for (let i = 0; i < city_input.length; i++) {
         }
 
     })
+
+    document.addEventListener("click", (event) => {
+        // si l'élément cliqué n'est pas l'input ni la liste de résultats
+        if (event.target !== city_input[i] || event.target !== list_container[i]) {
+            // masquer la liste de résultats
+            list_container[i].style.display = "none";
+
+        }
+    });
+
 }
 
 const weight = document.getElementById('weight');// Récupération du champ de saisie
