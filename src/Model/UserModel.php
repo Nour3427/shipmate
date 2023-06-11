@@ -83,6 +83,5 @@ class UserModel extends AbstractModel
     function deleteUser($idUser){
         $sql = ' DELETE FROM user WHERE idUser=? ';
         $this->db->prepareAndExecute($sql, [$idUser]);
-
     }
 }

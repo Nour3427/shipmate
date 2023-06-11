@@ -4,7 +4,7 @@ use App\Entity\Delivery;
 
 function asset(string $path)
 {
-    return BASE_URL . '/public//' . $path;
+    return BASE_URL . '/public/' . $path;
 }
 
 function constructUrl(string $path, array $params = [])
@@ -19,9 +19,7 @@ function constructUrl(string $path, array $params = [])
 }
 function dataSecure(string $data)
 {
-    $data = trim($data);
-    $data = strip_tags($data);
-    $data = stripslashes($data);
+    $data = htmlspecialchars(strip_tags(trim($data)));
     return $data;
 }
 

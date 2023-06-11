@@ -50,37 +50,24 @@ async function onSubmitForm(event)
 {
     // Stopper la soumission du formulaire
     event.preventDefault();
-
     // Récupérer les données du formulaire
     const form = event.currentTarget;
     var formparent = form.parentNode;
     const formData = new FormData(form);
-
     // Envoi des données au serveur
     const options = {
         method: 'POST',
         body: formData
     };
-    
     const url = form.dataset.ajaxurl;
-
     const response = await fetch(url, options);
-    const data = await response.json();
-
     form.remove();
 // Créer l'élément <p> avec le texte "Demande acceptée"
     const spanElement = document.createElement('span');
     spanElement.innerHTML = '<i class="fa-regular fa-circle-check" style="color: #17a139;" title="Demande acceptée"></i>';
-  
     // Insérer l'élément <p> à l'intérieur du parent
     formparent.appendChild(spanElement);
-
-
-
     }
-
-
-
 // CODE PRINCIPAL
 form=document.querySelectorAll('.request_form');
 for(let i=0; i<form.length; i++){

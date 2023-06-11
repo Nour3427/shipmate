@@ -36,7 +36,13 @@ if (isset($_POST['send'])) {
         header("Location: success");
         exit();
     }
-$requests = $requestModel->getRequestByUserID($_SESSION['user_logged_in_id']);
 }
+if (isset($_SESSION['user_logged_in_id'])) {
+    // Si l'utilisateur est connecté, récupérer les demandes liées à son ID
+    $requests = $requestModel->getRequestByUserID($_SESSION['user_logged_in_id']);
+}
+
+
+
 $template = 'search';
 include './templates/base.phtml';

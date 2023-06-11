@@ -1,5 +1,5 @@
    <div class="profile_container">
-       <h3>Bienvenue Nour,</h3>
+       <h3>Bienvenue <?= ucfirst($_SESSION['user_logged_in_name']) ?>,</h3>
        <div class="profile_details_container">
            <div class="titles">
                <div class="informations">
@@ -9,7 +9,7 @@
                    <p>Annonces</p>
                </div>
                <div class="request">
-                   <p>Livraisons</p>
+                   <p>Demandes de livraison</p>
                </div>
            </div>
 
@@ -86,7 +86,7 @@
                 /////////////////////////////////////////////////////////////////// -->
 
            <div class="announcement_details">
-               <h4>Mes annonces</h4>
+               <h4>Mes annonces de livraions</h4>
                <?php
                 if (empty($deliveries)) { ?>
                    <div class="no_result">
@@ -183,7 +183,7 @@
                                                            <i class="fa-regular fa-circle-check" style="color: #17a139;" title="Demande acceptée"></i>
                                                        <?php } else { ?>
                                                         <div class="form_container">
-                                                           <form id="request_form" class="request_form" data-ajaxurl="<?=constructUrl('/ajaxUpdateRequest')?>" action="profile" method="post">
+                                                           <form id="request_form" class="request_form" data-ajaxurl="<?=constructUrl('/ajaxUpdateRequest')?>" action="" method="post">
                                                                <input type="hidden" name="idRequest" value="<?= $delivery_request->getIdRequest(); ?>">
                                                                <input type="hidden" name="weight" value="<?= $delivery_request->getWeight(); ?>">
                                                                <input type="hidden" name="idDelivery" value="<?= $delivery->getIdDelivery(); ?>">
@@ -210,7 +210,7 @@
 
 
            <div class="request_details_container">
-               <h4>Mes livraisons</h4>
+               <h4>Mes demandes de livraison</h4>
                <?php
                 if (count($requests) == 0) { ?>
                    <div class="no_result">

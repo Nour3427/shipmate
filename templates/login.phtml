@@ -6,6 +6,10 @@
                                             echo 'style="display:none"';
                                         } ?>>
         <div class="login_container">
+        <?php if(isset($_SESSION['successfully_created'])){?>
+           <p class="message_flash"><?= $_SESSION['successfully_created'];
+           unset($_SESSION['successfully_created']); ?></p>
+            <?php } ?>
             <h3>Je me connecte</h3>
             <button class="facebook_button" type="button">
                 <div class="facebook_login">

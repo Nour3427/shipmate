@@ -69,6 +69,7 @@ if (isset($_POST['signup_submit'])) {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         $UserModel->addUser($firstname, $lastname, $email, $hashed_password, $phone_number);
+        $_SESSION['successfully_created']='Votre compte a été bien créé';
         header("Location: " . $_SERVER['REQUEST_URI']);
         exit();
     }
@@ -85,9 +86,6 @@ if (isset($_POST['login_submit'])) {
         if ($user == null) {
             $error_message = 'Email ou mot de passe incorrect';
         } else {
-            // $error_message = 'connecté';
-            // $user contains user object
-            // var_dump($user);
             $_SESSION['user_logged_in_id'] = $user->getIdUser();
             $_SESSION['user_logged_in_name'] = $user->getFirstname();
             $_SESSION['user_role'] = $user->getRole();

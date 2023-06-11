@@ -11,14 +11,6 @@ use App\Entity\User;
 
 class DeliveryModel extends AbstractModel
 {
-    // private Requestmodel $requestModel ;
-    // $requestModel = new RequestModel().
-    // public function __construct()
-    // {
-    //     $this->requestModel = new RequestModel();
-    // }
-    // insérer les livraisons proposées par les utilisateurs 
-
     function addDelivery(Delivery $delivery)
     {
 
@@ -79,6 +71,7 @@ class DeliveryModel extends AbstractModel
              $result['requests'] = $RequestModel->getRequests($result['idDelivery']); 
              $deliveries[] = new Delivery($result);
         }
+      
         return $deliveries;
     }
     function updateDelivery($remaining_weight, $idDelivery)

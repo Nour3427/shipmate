@@ -81,18 +81,22 @@ if (isset($_POST['modify_submit'])) {
     if ($_POST['newFirstname'] != $currentUser->getFirstname() || $_POST['newLastname'] != $currentUser->getLastname() || $_POST['newEmail'] != $currentUser->getEmail() || $_POST['newPhone_number'] != $currentUser->getPhone_number()) {
         if (empty($errors)) {
 
-            $hashed_newPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-
+            if ($newPassword != $currentUser->getPassword()) {
+                $hashed_newPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+            } else {
+                $hashed_newPassword = $currentUser->getPassword();
+            }
             $UserModel->updateUser($idUser, $newFirstname, $newLastname, $newEmail, $hashed_newPassword, $newPhone_number);
             $_SESSION['message_flash'] = 'Votre modification a été bien enregistrée';
-            header("Location: " . $_SERVER['REQUEST_URI']);
+            $_SESSION['user_logged_in_name'] = $newFirstname;
+             header("Location: " . $_SERVER['REQUEST_URI']);
             exit();
         }
     }
 }
 
 $requests = $RequestModel->getRequestByUserID($idUser);
-$deliveries=$DeliveryModel->getDeliveriesWithRequests($idUser);
+$deliveries = $DeliveryModel->getDeliveriesWithRequests($idUser);
 // if(isset($_POST['accept'])){
 //     $RequestModel->updateRequest('Acceptée', $_POST['idRequest']);
 //     $remaining_weight=intval($_POST['weight_limit'])-intval($_POST['weight']);
@@ -106,7 +110,7 @@ $deliveries=$DeliveryModel->getDeliveriesWithRequests($idUser);
 
 //     // Retourne au client la réponse en JSON
 //     echo json_encode($result);
-   
+
 // }
 
 $template = 'profile';

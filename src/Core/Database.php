@@ -50,7 +50,6 @@ class Database {
     {
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute($values);
-
         return $pdoStatement;
     }
 
@@ -61,7 +60,6 @@ class Database {
     {
         $pdoStatement = $this->prepareAndExecute($sql, $values);
         $result = $pdoStatement->fetch();
-
         return $result;
     }
 
@@ -72,7 +70,6 @@ class Database {
     {
         $pdoStatement = $this->prepareAndExecute($sql, $values);
         $results = $pdoStatement->fetchAll();
-
         return $results;
     }
 }
